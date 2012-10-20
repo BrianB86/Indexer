@@ -157,15 +157,5 @@ TokenizerT * run(char * filename) {
 		printf("Error: unable to create tokenizer\n");
 		return NULL;
 	}
-	
-	/*char* token = NULL;
-	token = TKGetNextToken(tokenizer);
-	while(token!= NULL) {
-		printf("%s\n", token);
-		free(token);
-		token = TKGetNextToken(tokenizer);
-	}	
-	TKDestroy(tokenizer);*/
-
 	return tokenizer;
 }

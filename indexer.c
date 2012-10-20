@@ -15,7 +15,6 @@ SortedListPtr globalList;
 int compareWords(void* word1, void * word2)
 {
 	int i;
-	/*comparing to itself???*/
 	wordNPtr w1, w2;
 	char *s1, *s2;
 	w1 = (wordNPtr)word1;
@@ -31,22 +30,23 @@ int compareWords(void* word1, void * word2)
 	
 }
 
-int compareStrings(void *p1, void *p2)
-{
-	char *s1 = p1;
-	char *s2 = p2;
-
-	return strcmp(s1, s2);
-}
-
-/*SortedListPtr setSortedList(TokenizerT * tk, SortedListPtr sl)
+int compareFiles(void* word1, void * word2)
 {
 	int i;
-	if (sl == NULL)
-	{
-			for (i = 0; i < 
-	}
-}*/
+	fileNPtr w1, w2;
+	char *s1, *s2;
+	w1 = (fileNPtr)word1;
+	w2 = (fileNPtr)word2;
+	s1 = w1->fileName;
+	printf("word1: %s\n",s1);
+	s2 = w2->fileName;
+	printf("word2: %s\n",s2);
+	
+	i =strcmp(s1, s2);
+	printf("compare:");
+	return i;
+	
+}
 
 int walkDir(char* name){ /*---------------------------------take in SL also*/
 	DIR* dr;
@@ -89,14 +89,12 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 			tk = run(name);
 			token = TKGetNextToken(tk);
 			while(token!= NULL) {
-			//	printf("Word is %s\n",token);
 				temp = (char*)malloc(strlen(token));
 				strcpy(temp,token);
-				//printf("%d",&temp);
 				wNode = (wordNPtr)malloc(sizeof(struct wordNode));
 				wNode->wordName = temp;
 				
-				SLInsert(globalList, wNode);
+				SLInsert(globalList, wNode, name);
 				free(token);
 				token = TKGetNextToken(tk);
 			}
@@ -109,9 +107,9 @@ int main(int argc, char** argv)
 {
 	NodePtr curr;
 	wordNPtr word;
-	wordNPtr word2;
+	/*wordNPtr word2;
 	char* temp1;
-	char*temp2;
+	char*temp2;*/
 
 	if (argc != 3)
 	{
