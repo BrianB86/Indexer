@@ -10,11 +10,27 @@
 #include	"sorted-list.h"
 #include	"tokenizer.h"
 
-TokenizerT * tk;
+SortedListPtr globalList;
 
-int compareWords(wordNPtr word1, wordNPtr word2)
+int compareWords(void* word1, void * word2)
 {
-	return strcmp(word1->wordName, word2->wordName);
+	/*comparing to itself???*/
+	wordNPtr w1, w2;
+	char *s1, *s2;
+	w1 = (wordNPtr)word1;
+	w2 = (wordNPtr)word2;	
+	s1 = w1->wordName;
+	s2 = w2->wordName;
+	
+	return strcmp(s1, s2);
+}
+
+int compareStrings(void *p1, void *p2)
+{
+	char *s1 = p1;
+	char *s2 = p2;
+
+	return strcmp(s1, s2);
 }
 
 /*SortedListPtr setSortedList(TokenizerT * tk, SortedListPtr sl)
@@ -32,6 +48,7 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 	struct dirent *fname;
 	char* newPath;
 	char* token;
+	TokenizerT * tk;
 	
 	if(stat(name,&statbuf)==-1){
 		printf("Error accessing file or Directory %s\n",name);
@@ -64,9 +81,9 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 			tk = run(name);
 			token = TKGetNextToken(tk);
 			while(token!= NULL) {
-				printf("%s\n", token);
 				free(token);
 				token = TKGetNextToken(tk);
+				SLInsert(globalList, token);
 			}
 	}
 	
@@ -75,7 +92,7 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 
 int main(int argc, char** argv)
 {
-	/*char* token;*/
+	NodePtr curr;
 	
 	if (argc != 3)
 	{
@@ -85,14 +102,15 @@ int main(int argc, char** argv)
 	/*dest is arg[1]*/
 	/*source files are arg[2]*/
 	
+	globalList = SLCreate(compareWords);
+	
 	walkDir(argv[2]);
-	/*tk = run(argv[2]);*/
-	/*token = TKGetNextToken(tk);
-	while(token!= NULL) {
-		printf("%s\n", token);
-		free(token);
-		token = TKGetNextToken(tk);
-	}*/
+	curr = globalList->head;
+	while(curr != NULL) /*prints the list*/
+		{
+			printf("LIST %d\n",*((int *)curr->object));
+			curr = curr->next;
+		}
 	/*TKDestroy(tk);*/
 	
 	return 0;
