@@ -14,15 +14,21 @@ SortedListPtr globalList;
 
 int compareWords(void* word1, void * word2)
 {
+	int i;
 	/*comparing to itself???*/
 	wordNPtr w1, w2;
 	char *s1, *s2;
 	w1 = (wordNPtr)word1;
-	w2 = (wordNPtr)word2;	
+	w2 = (wordNPtr)word2;
 	s1 = w1->wordName;
+	printf("word1: %s\n",s1);
 	s2 = w2->wordName;
+	printf("word2: %s\n",s2);
 	
-	return strcmp(s1, s2);
+	i =strcmp(s1, s2);
+	printf("compare:");
+	return i;
+	
 }
 
 int compareStrings(void *p1, void *p2)
@@ -48,8 +54,10 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 	struct dirent *fname;
 	char* newPath;
 	char* token;
+	char* temp;
+	wordNPtr wNode;
 	TokenizerT * tk;
-	
+
 	if(stat(name,&statbuf)==-1){
 		printf("Error accessing file or Directory %s\n",name);
 		return -1;
@@ -81,19 +89,30 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 			tk = run(name);
 			token = TKGetNextToken(tk);
 			while(token!= NULL) {
+			//	printf("Word is %s\n",token);
+				temp = (char*)malloc(strlen(token));
+				strcpy(temp,token);
+				//printf("%d",&temp);
+				wNode = (wordNPtr)malloc(sizeof(struct wordNode));
+				wNode->wordName = temp;
+				
+				SLInsert(globalList, wNode);
 				free(token);
 				token = TKGetNextToken(tk);
-				SLInsert(globalList, token);
 			}
 	}
-	
+
 	return 1;
 }
 
 int main(int argc, char** argv)
 {
 	NodePtr curr;
-	
+	wordNPtr word;
+	wordNPtr word2;
+	char* temp1;
+	char*temp2;
+
 	if (argc != 3)
 	{
 		printf("Invalid number of arguments.\n");
@@ -101,17 +120,39 @@ int main(int argc, char** argv)
 	}
 	/*dest is arg[1]*/
 	/*source files are arg[2]*/
-	
+
 	globalList = SLCreate(compareWords);
-	
+
 	walkDir(argv[2]);
+	
+	
+/*	temp1=(char*)malloc(4);
+	temp1="yoo";
+	temp2=(char*)malloc(4);
+	temp2="gii";
+	
+	word = (wordNPtr)malloc(sizeof(struct wordNode));
+	word->wordName = temp1;
+	SLInsert(globalList, word);
+	
+	word = (wordNPtr)malloc(sizeof(struct wordNode));
+	word->wordName = temp2;
+	SLInsert(globalList, word);
+	
+	word = (wordNPtr)malloc(sizeof(struct wordNode));
+	word->wordName = (char*)malloc(6);
+	word->wordName="molut";
+	SLInsert(globalList, word);*/
 	curr = globalList->head;
+	//word=(wordNPtr)curr->object;
 	while(curr != NULL) /*prints the list*/
 		{
-			printf("LIST %d\n",*((int *)curr->object));
+			word=(wordNPtr)curr->object;
+			printf("LIST %s\n",(char*)word->wordName);
 			curr = curr->next;
+			
 		}
 	/*TKDestroy(tk);*/
-	
+
 	return 0;
 }

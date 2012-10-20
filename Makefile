@@ -1,5 +1,5 @@
 CC=gcc
-CFLAGS=-ansi -pedantic -Wall -O -g
+CFLAGS= -Wall -O -g
 
 indexer: indexer.c sorted-list.o tokenizer.o
 	$(CC) $(CFLAGS) indexer.c sorted-list.o tokenizer.o -o indexer

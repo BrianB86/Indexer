@@ -4,7 +4,7 @@
  * tokenizer.h
  */
 
-#include <stdio.h>
+#include <stdlib.h>
 
 struct TokenizerT_ {
 	FILE* filename;	

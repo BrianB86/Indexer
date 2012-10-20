@@ -21,7 +21,7 @@
 SortedListPtr SLCreate(CompareFuncT cf)
 {
 	SortedListPtr list= (SortedListPtr)malloc(sizeof(struct SortedList));
-	
+
 	if (cf == NULL)
 		return NULL;
 	list->funct = cf;
@@ -90,28 +90,34 @@ int SLInsert(SortedListPtr list, void *newObj)
 	int compare;
 	NodePtr newo;
 	SortedListIteratorPtr it;
-	
+
 	it = SLCreateIterator(list);
 	if (it == NULL){
 		SLDestroyIterator(it);
 		return 0;
 	}
 
-	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) > 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
+	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) < 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
 	{
+		printf("testA\n");
 		newo = NodeCreate(newObj,it->curr);
 		newo->next = it->curr;
 		list->head = newo;
 		SLDestroyIterator(it);
 		return 1;
-	}	
+	}
+	printf("testB\n");
+	//it->prev = it->curr;
+//	it->curr= it->prev->next;
 	while(it->curr != NULL){ /*---------------------loop to move iterator*/
-		compare = (*list->funct)(newObj, it->curr->object);		
-		if(compare >0) /*---------------------------if the iterator is less than the new object, insert it*/
+		printf("test3\n");
+		compare = (*list->funct)(newObj, it->curr->object);	
+		printf("%d\n",compare);
+		if(compare <0) /*---------------------------if the iterator is less than the new object, insert it*/
 		{
 			break;
 		}
-		else if(compare < 0) /*---------------------if the iterator is greater than the new object, move the iterator to the next node(s)*/
+		else if(compare > 0) /*---------------------if the iterator is greater than the new object, move the iterator to the next node(s)*/
 		{
 			it = SLNextItem(it);
 		}
@@ -134,7 +140,7 @@ int FileInsert(SortedListPtr list, void *newObj)
 	NodePtr newo;
 	SortedListIteratorPtr it;
 	fileNPtr temp;
-	
+
 	it = SLCreateIterator(list);
 	if (it == NULL){
 		SLDestroyIterator(it);
@@ -191,7 +197,7 @@ int SLRemove(SortedListPtr list, void *newObj)
 {
 	int compare;
 	SortedListIteratorPtr it;
-	
+
 	it = SLCreateIterator(list);
 	if (it == NULL){
 		SLDestroyIterator(it);
@@ -318,4 +324,3 @@ void *SLNextItem(SortedListIteratorPtr iter)
 		iter->curr = iter->prev->next;
 		return iter;
 }
-
