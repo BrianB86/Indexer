@@ -6,20 +6,22 @@
 
 #include <stdlib.h>
 
-struct file
+struct fileNode
 {
 	char *fileName;
 	int wordCount;
 };
-typedef struct file* filePtr;
+typedef struct fileNode* fileNPtr;
 
-struct word
+struct wordNode
 {
-	char * word;
-	filePtr file;
+	char * wordName;
+	SortedListPtr fileList;
 };
-typedef struct word* wordPtr;
+typedef struct wordNode* wordNPtr;
 
-int compareWords(wordPtr word1, wordPtr word2);
+int compareWords(wordNPtr word1, wordNPtr word2);
+
+
 
 #endif

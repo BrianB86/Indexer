@@ -48,34 +48,42 @@ SortedListPtr setSortedList(TokenizerT * tk, SortedListPtr sl)
 	}
 }
 
-
 int walkDir(char* name){ //take in SL also
-	DIR* dr =opendir(name);
+	DIR* dr;
+	struct stat statbuf;
 	struct dirent *fname;
 	char* newPath;
-	if(!dr){
-		return 0;
-		}
-	while ((fname=readdir(dr))!=NULL){
-		if(fname->d_name[0]=='.'){
-			continue;
-		}
-		else if(fname->d_type==DT_DIR){
-			printf("DirName: %s\n", fname->d_name);
-			newPath=(char*)malloc(strlen(name)+strlen(fname->d_name)+1);
-			sprintf(newPath, "%s/%s", name, fname->d_name);
-			walkDir(newPath); //Pass SL
-			free(newPath);
-		}else if(fname->d_type==DT_REG){
-			printf("FileName: %s\n", fname->d_name);
-			newPath=(char*)malloc(strlen(name)+strlen(fname->d_name)+1);
-			sprintf(newPath, "%s/%s", name, fname->d_name); // add full path to file name and pass to tokenizer
-			// Tokenize and add words to list
-			free(newPath);
-		}
-		
+	
+	if(stat(name,&statbuf)==-1){
+		printf("Error accessing file or Directory %s\n",name);
+		return -1;
 	}
-	closedir(dr);
+
+	if(S_ISDIR(statbuf.st_mode)){
+		dr =opendir(name);
+		if(!dr){
+			printf("Cannot open Directory %s\n",name);
+			return -1;
+		}
+		printf("DirName: %s\n", name);
+		while ((fname=readdir(dr))!=NULL){
+			if(fname->d_name[0]=='.'){ 			/*---------- Skips hidden fies and '.' '..' Directorys */
+				continue;
+			}
+			else{
+				newPath=(char*)malloc(strlen(name)
+				+strlen(fname->d_name)+1);   
+				sprintf(newPath, "%s/%s", name, fname->d_name);
+				walkDir(newPath); //Pass SL also
+				free(newPath);
+			}
+		}
+	}
+	else if(S_ISREG(statbuf.st_mode)){
+			printf("FileName: %s\n", name);
+			// Tokenize and add words to list	
+	}
+	
 	return 1;
 }
 

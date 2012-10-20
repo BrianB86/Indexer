@@ -8,6 +8,8 @@
 
 typedef int (*CompareFuncT)(void *, void *);
 
+/* word type obj holds a nodePtr to file list, 
+ * file type node holds an integer word count */
 struct Node
 {
 	struct Node* next;
