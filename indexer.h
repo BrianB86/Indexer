@@ -5,6 +5,7 @@
  */
 
 #include <stdlib.h>
+#include "sorted-list.h"
 
 struct fileNode
 {
@@ -21,7 +22,5 @@ struct wordNode
 typedef struct wordNode* wordNPtr;
 
 int compareWords(wordNPtr word1, wordNPtr word2);
-
-
 
 #endif

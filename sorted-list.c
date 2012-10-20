@@ -133,7 +133,7 @@ int FileInsert(SortedListPtr list, void *newObj)
 	int compare;
 	NodePtr newo;
 	SortedListIteratorPtr it;
-	filePtr temp;
+	fileNPtr temp;
 	
 	it = SLCreateIterator(list);
 	if (it == NULL){
@@ -161,8 +161,9 @@ int FileInsert(SortedListPtr list, void *newObj)
 		}
 		else /*-------------------------------------if they're the same/equal*/
 		{
-			/*TODO: increment counter*/
-			temp = it->curr->object;
+			/*TODO: increment counter*/			
+			temp = (fileNPtr)it->curr->object;
+			temp->wordCount++;
 			it->prev->next = it->curr->next;
 			SLInsert(list, temp);
 			SLDestroyIterator(it);

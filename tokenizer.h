@@ -1,10 +1,10 @@
-#ifndef SORTED_LIST_H
-#define SORTED_LIST_H
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
 /*
  * tokenizer.h
  */
 
-#include <stdlib.h>
+#include <stdio.h>
 
 struct TokenizerT_ {
 	FILE* filename;	
