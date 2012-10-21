@@ -38,10 +38,6 @@ void SLDestroy(SortedListPtr list);
 
 int SLInsert(SortedListPtr list, void *newObj, char* filename);
 
-int FileInsert(SortedListPtr list, void *newObj);
-
-int ReInsert(SortedListPtr list, void *newObj);
-
 int SLRemove(SortedListPtr list, void *newObj);
 
 SortedListIteratorPtr SLCreateIterator(SortedListPtr list);
@@ -49,5 +45,9 @@ SortedListIteratorPtr SLCreateIterator(SortedListPtr list);
 void SLDestroyIterator(SortedListIteratorPtr iter);
 
 void *SLNextItem(SortedListIteratorPtr iter);
+
+int FileInsert(SortedListPtr list, void *newObj);
+
+int ReInsert(SortedListPtr list, void *newObj);
 
 #endif

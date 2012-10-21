@@ -10,6 +10,7 @@
 #include	"sorted-list.h"
 #include	"tokenizer.h"
 
+
 SortedListPtr globalList;
 
 int compareWords(void* word1, void * word2)
@@ -23,11 +24,11 @@ int compareWords(void* word1, void * word2)
 	printf("word1: %s\n",s1);
 	s2 = w2->wordName;
 	printf("word2: %s\n",s2);
-	
+
 	i =strcmp(s1, s2);
 	printf("compare:");
 	return i;
-	
+
 }
 
 int compareFiles(void* word1, void * word2)
@@ -41,11 +42,11 @@ int compareFiles(void* word1, void * word2)
 	printf("word1: %s\n",s1);
 	s2 = w2->fileName;
 	printf("word2: %s\n",s2);
-	
+
 	i =strcmp(s1, s2);
 	printf("compare:");
 	return i;
-	
+
 }
 
 int walkDir(char* name){ /*---------------------------------take in SL also*/
@@ -93,8 +94,9 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 				strcpy(temp,token);
 				wNode = (wordNPtr)malloc(sizeof(struct wordNode));
 				wNode->wordName = temp;
-				
-				SLInsert(globalList, wNode, name);
+				temp = (char*)malloc(strlen(name));
+				strcpy(temp,name);
+				SLInsert(globalList, wNode, temp);
 				free(token);
 				token = TKGetNextToken(tk);
 			}
@@ -107,9 +109,10 @@ int main(int argc, char** argv)
 {
 	NodePtr curr;
 	wordNPtr word;
-	/*wordNPtr word2;
-	char* temp1;
-	char*temp2;*/
+
+	NodePtr flist;
+	fileNPtr file;
+
 
 	if (argc != 3)
 	{
@@ -122,33 +125,26 @@ int main(int argc, char** argv)
 	globalList = SLCreate(compareWords);
 
 	walkDir(argv[2]);
-	
-	
-/*	temp1=(char*)malloc(4);
-	temp1="yoo";
-	temp2=(char*)malloc(4);
-	temp2="gii";
-	
-	word = (wordNPtr)malloc(sizeof(struct wordNode));
-	word->wordName = temp1;
-	SLInsert(globalList, word);
-	
-	word = (wordNPtr)malloc(sizeof(struct wordNode));
-	word->wordName = temp2;
-	SLInsert(globalList, word);
-	
-	word = (wordNPtr)malloc(sizeof(struct wordNode));
-	word->wordName = (char*)malloc(6);
-	word->wordName="molut";
-	SLInsert(globalList, word);*/
+
+
 	curr = globalList->head;
-	//word=(wordNPtr)curr->object;
+	
 	while(curr != NULL) /*prints the list*/
 		{
 			word=(wordNPtr)curr->object;
 			printf("LIST %s\n",(char*)word->wordName);
-			curr = curr->next;
 			
+			flist = word->fileList->head;
+			while(flist!=NULL){
+				file= (fileNPtr)flist->object;
+				printf("FILE: %s NUM %i\n",file->fileName,file->wordCount);
+				flist = flist->next;
+				
+				}
+			
+			
+			curr = curr->next;
+
 		}
 	/*TKDestroy(tk);*/
 

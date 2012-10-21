@@ -25,7 +25,7 @@
  */
 
 TokenizerT *TKCreate(char *ts) {
-	
+
 	/*
 	 * Description: creates a new tokenizer struct from the token stream and delimiters
 	 * Parameters: set of delimiters, token stream
@@ -35,24 +35,24 @@ TokenizerT *TKCreate(char *ts) {
 	 */
 	FILE * temp;
 	TokenizerT* tokenizer;
-	 
+
 	if(ts == NULL){
 		return NULL;
 	}
-	
+
 	tokenizer = (TokenizerT*)malloc(sizeof(TokenizerT));
-	
+
 	if(tokenizer == NULL){
 		return NULL;
 	}
-	
+
 	temp = fopen(ts,"r");
 	if(temp == NULL)
 	{
 		printf("Cannot read file.\n");
 		return NULL;
 	} tokenizer->filename = temp; tokenizer->current_position = 0;
-	
+
 	return tokenizer;
 }
 
@@ -64,7 +64,7 @@ TokenizerT *TKCreate(char *ts) {
  */
 
 void TKDestroy(TokenizerT *tk) {	
-	
+
 	/*
 	 * Description: destroys tokenizer struct and deallocates all memory
 	 * Parameters: tokenizer to be destroyed
@@ -73,7 +73,7 @@ void TKDestroy(TokenizerT *tk) {
 	 */
 	fclose(tk->filename);
 	free(tk);
-	
+
 	return;
 }
 
@@ -97,13 +97,13 @@ char *TKGetNextToken(TokenizerT *tk) {
 	 * Modifies: tokenizer->current_position: identifies starting point of next token; creates a new string with 
 	 * Returns: token extracted as a char* on success, null on failure/end of string;
 	 */
-	
+
 	char* token = NULL;
 	fpos_t token_pos;
     int length=0;
 	char current;
 	int i;
-	
+
 	/* Checks each char until it finds the first alnum OR EOF */
 	current = fgetc(tk->filename);
 	fgetpos(tk->filename,&token_pos); /*gets position in file*/
@@ -116,7 +116,7 @@ char *TKGetNextToken(TokenizerT *tk) {
         fgetpos(tk->filename,&token_pos);
 		current = fgetc(tk->filename);
 	}
-	
+
 	if(current== EOF) {
 		return NULL;
 	}
@@ -150,9 +150,9 @@ char *TKGetNextToken(TokenizerT *tk) {
  */
 
 TokenizerT * run(char * filename) {
-	
+
 	TokenizerT* tokenizer = TKCreate(filename);
-	
+
 	if(tokenizer == NULL) {
 		printf("Error: unable to create tokenizer\n");
 		return NULL;

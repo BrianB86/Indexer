@@ -40,7 +40,7 @@ SortedListPtr SLCreate(CompareFuncT cf)
 void SLDestroy(SortedListPtr list)
 {
 	/*FREE FILENPTR?*/
-	
+
 	NodePtr temp;
 	temp = list->head;
 	/*free everything!!!*/
@@ -92,7 +92,8 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 	int compare;
 	NodePtr newo;
 	SortedListIteratorPtr it;
-	fileNPtr f = (fileNPtr)malloc(sizeof(struct fileNode));
+	fileNPtr f =(fileNPtr)malloc(sizeof(struct fileNode));
+	SortedListPtr flist = SLCreate(compareFiles);
 	
 	newo = NULL;
 	f->fileName = filename;
@@ -107,9 +108,9 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) < 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
 	{
 		newo = NodeCreate(newObj,it->curr);
-		
-		FileInsert(((wordNPtr)newo->object)->fileList, f); /*insert or increment filenode*/
-		
+		((wordNPtr)newo->object)->fileList=flist;
+		FileInsert(flist, f); /*insert or increment filenode*/
+
 		newo->next = it->curr;
 		list->head = newo;
 		SLDestroyIterator(it);
@@ -129,18 +130,22 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 		else /*-------------------------------------if they're the same/equal*/
 		{
 			/*find FILE and insert it*/
-			FileInsert(((wordNPtr)newo->object)->fileList,f);
-			
+			flist=((wordNPtr)it->curr->object)->fileList;
+			FileInsert(flist,f);
+
 			printf("ALREADY INSERTED.\n");
 			SLDestroyIterator(it);
 			free(f);
 			return 1;				
 		}
 	}
-	it->prev->next = NodeCreate(newObj,it->curr); /*smallest; put the new node on the end*/
-
-	FileInsert(((wordNPtr)newo->object)->fileList, f);
+	newo=NodeCreate(newObj,it->curr);
 	
+	it->prev->next =  newo;/*smallest; put the new node on the end*/
+
+	((wordNPtr)newo->object)->fileList=flist;
+	FileInsert(flist, f);
+
 	SLDestroyIterator(it);
 	return 1;
 }
@@ -155,7 +160,7 @@ int FileInsert(SortedListPtr list, void *newObj)
 	NodePtr newo;
 	SortedListIteratorPtr it;
 	fileNPtr temp;
-	
+
 	printf("FINSERT\n");
 
 	it = SLCreateIterator(list);
@@ -165,7 +170,7 @@ int FileInsert(SortedListPtr list, void *newObj)
 		return 0;
 	}
 
-	if (it->prev == NULL) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
+	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) < 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
 	{
 		printf("NULL\n");
 		newo = NodeCreate(newObj,it->curr);
@@ -174,6 +179,7 @@ int FileInsert(SortedListPtr list, void *newObj)
 		SLDestroyIterator(it);
 		return 1;
 	}	
+
 	while(it->curr != NULL){ /*---------------------loop to move iterator*/
 		compare = (*list->funct)(newObj, it->curr->object);		
 		printf("WHILE\n");
@@ -181,8 +187,11 @@ int FileInsert(SortedListPtr list, void *newObj)
 		{
 			temp = (fileNPtr)it->curr->object;
 			temp->wordCount++;
+			if(strcmp(((fileNPtr)it->prev->object)->fileName,((fileNPtr)it->curr->object)->fileName) == 0){
+				printf("Same previ and curr!\n");
+			}
 			it->prev->next = it->curr->next;
-			ReInsert(list, temp);
+			//ReInsert(list, temp);
 			SLDestroyIterator(it);
 			return 1;				
 		}
@@ -200,12 +209,12 @@ int ReInsert(SortedListPtr list, void *newObj)
 	/*go through list and compare each by the number of occurences
 	 * when the current is greater than the next number of occurrences, 
 	 * then insert it*/
-	
+
 	int compare;
 	NodePtr newo;
 	SortedListIteratorPtr it;
 	/*list->funct =*/ /*num compare*/
-	
+
 	printf("REINSERT\n");
 
 	it = SLCreateIterator(list);
@@ -341,6 +350,7 @@ SortedListIteratorPtr SLCreateIterator(SortedListPtr list)
 	it->prev = list->head;
 	return it;
 }
+
 
 
 /*

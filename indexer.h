@@ -7,6 +7,9 @@
 #include <stdlib.h>
 #include "sorted-list.h"
 
+int compareWords(void* word1, void * word2);
+int compareFiles(void* word1, void * word2);
+
 struct fileNode
 {
 	char *fileName;
@@ -22,6 +25,5 @@ struct wordNode
 typedef struct wordNode* wordNPtr;
 
 int compareWords(void * word1, void * word2);
-int compareFiles(void * word1, void * word2);
 
 #endif
