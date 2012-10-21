@@ -21,12 +21,11 @@ int compareWords(void* word1, void * word2)
 	w1 = (wordNPtr)word1;
 	w2 = (wordNPtr)word2;
 	s1 = w1->wordName;
-	printf("word1: %s\n",s1);
+	/*printf("word1: %s\n",s1);*/
 	s2 = w2->wordName;
-	printf("word2: %s\n",s2);
+	/*printf("word2: %s\n",s2);*/
 
 	i =strcmp(s1, s2);
-	printf("compare:");
 	return i;
 
 }
@@ -39,12 +38,10 @@ int compareFiles(void* word1, void * word2)
 	w1 = (fileNPtr)word1;
 	w2 = (fileNPtr)word2;
 	s1 = w1->fileName;
-	printf("word1: %s\n",s1);
-	s2 = w2->fileName;
-	printf("word2: %s\n",s2);
-
+	/*printf("word1: %s\n",s1);*/
+	s2 = w2->fileName;	
+	/*printf("word2: %s\n",s2);*/
 	i =strcmp(s1, s2);
-	printf("compare:");
 	return i;
 
 }
@@ -72,7 +69,7 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 		}
 		printf("DirName: %s\n", name);
 		while ((fname=readdir(dr))!=NULL){
-			if(fname->d_name[0]=='.'){ 	/*-------------------Skips hidden fies and '.' '..' Directorys */
+			if(fname->d_name[0]=='.' || fname->d_name[strlen(fname->d_name)-1]=='~'){ 	/*-------------------Skips hidden fies and '.' '..' Directories */
 				continue;
 			}
 			else{
@@ -126,7 +123,6 @@ int main(int argc, char** argv)
 
 	walkDir(argv[2]);
 
-
 	curr = globalList->head;
 	
 	while(curr != NULL) /*prints the list*/
@@ -141,12 +137,8 @@ int main(int argc, char** argv)
 				flist = flist->next;
 				
 				}
-			
-			
 			curr = curr->next;
-
 		}
 	/*TKDestroy(tk);*/
-
 	return 0;
 }
