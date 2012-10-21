@@ -105,16 +105,14 @@ char *TKGetNextToken(TokenizerT *tk) {
 	int i;
 
 	/* Checks each char until it finds the first alnum OR EOF */
-	current = fgetc(tk->filename);
 	fgetpos(tk->filename,&token_pos); /*gets position in file*/
-	while(current!=EOF) {
+	while((current = fgetc(tk->filename))!=EOF) {
 		if(isalnum(current)) {
 			length++;
 			break;
 		}
 		tk->current_position++;
         fgetpos(tk->filename,&token_pos);
-		current = fgetc(tk->filename);
 	}
 
 	if(current== EOF) {
@@ -131,6 +129,8 @@ char *TKGetNextToken(TokenizerT *tk) {
         }
 		tk->current_position++;
 	}
+	
+	/*creates token*/
     token = (char*)malloc(length + 1);
     fsetpos(tk->filename,&token_pos);
 	fgets(token, length+1,tk->filename);
