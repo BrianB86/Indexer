@@ -24,7 +24,6 @@ int compareWords(void* word1, void * word2)
 	/*printf("word1: %s\n",s1);*/
 	s2 = w2->wordName;
 	/*printf("word2: %s\n",s2);*/
-
 	i =strcmp(s1, s2);
 	return i;
 
@@ -67,9 +66,9 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 			printf("Cannot open Directory %s\n",name);
 			return -1;
 		}
-		printf("DirName: %s\n", name);
+		printf("Directory Name: %s\n", name);
 		while ((fname=readdir(dr))!=NULL){
-			if(fname->d_name[0]=='.' || fname->d_name[strlen(fname->d_name)-1]=='~'){ 	/*-------------------Skips hidden fies and '.' '..' Directories */
+			if(fname->d_name[0]=='.' || fname->d_name[strlen(fname->d_name)-1]=='~'){ 	/*-------------------Skips hidden files and '.' '..' Directories and those ending with ~*/
 				continue;
 			}
 			else{
@@ -82,7 +81,7 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 		}
 	}
 	else if(S_ISREG(statbuf.st_mode)){
-			printf("FileName: %s\n", name);
+			/*printf("FileName: %s\n", name);*/
 			/*Tokenize and add words to list*/
 			tk = run(name);
 			token = TKGetNextToken(tk);
@@ -104,41 +103,40 @@ int walkDir(char* name){ /*---------------------------------take in SL also*/
 
 int main(int argc, char** argv)
 {
-	NodePtr curr;
+	/*dest is argv[1]*/
+	/*source files are argv[2]*/
+	NodePtr curr, flist;
 	wordNPtr word;
-
-	NodePtr flist;
-	fileNPtr file;
-
+	fileNPtr file;	
+	FILE *output;
 
 	if (argc != 3)
 	{
 		printf("Invalid number of arguments.\n");
 		return -1;
 	}
-	/*dest is arg[1]*/
-	/*source files are arg[2]*/
-
-	globalList = SLCreate(compareWords);
-
-	walkDir(argv[2]);
-
-	curr = globalList->head;
 	
-	while(curr != NULL) /*prints the list*/
+	globalList = SLCreate(compareWords);
+	walkDir(argv[2]);
+	curr = globalList->head;
+	output = fopen(argv[1],"a+"); /*append file (add text to a file or create a file if it does not exist.*/
+
+	while(curr != NULL) /*----------prints the list*/
 		{
 			word=(wordNPtr)curr->object;
-			printf("LIST %s\n",(char*)word->wordName);
+			fprintf(output, "<list> %s\n",(char*)word->wordName);
 			
 			flist = word->fileList->head;
 			while(flist!=NULL){
 				file= (fileNPtr)flist->object;
-				printf("FILE: %s NUM %i\n",file->fileName,file->wordCount);
+				fprintf(output, "%s %i\n",file->fileName,file->wordCount);
 				flist = flist->next;
 				
 				}
+			fprintf(output, "</list>\n");
 			curr = curr->next;
 		}
-	/*TKDestroy(tk);*/
+	fclose(output);
+	SLDestroy(globalList);
 	return 0;
 }
