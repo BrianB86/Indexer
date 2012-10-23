@@ -24,6 +24,4 @@ struct wordNode
 };
 typedef struct wordNode* wordNPtr;
 
-int compareWords(void * word1, void * word2);
-
 #endif

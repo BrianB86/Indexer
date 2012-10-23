@@ -7,6 +7,16 @@
 #include	"sorted-list.h"
 #include 	"indexer.h"
 
+
+int compareOcc(void* num1, void * num2)
+{
+	int n1, n2;
+	n1 = *(int*)num1;
+	n2 = *(int*)num2;
+	return n1 > n2;
+
+}
+
 /*
  * SLCreate creates a new, empty sorted list.  The caller must provide
  * a comparator function that can be used to order objects that will be
@@ -93,7 +103,7 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 	NodePtr newo;
 	SortedListIteratorPtr it;
 	fileNPtr f =(fileNPtr)malloc(sizeof(struct fileNode));
-	SortedListPtr flist = SLCreate(compareFiles);
+	SortedListPtr flist;
 	
 	newo = NULL;
 	f->fileName = filename;
@@ -107,10 +117,10 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 
 	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) < 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
 	{
+		flist = SLCreate(compareFiles);
 		newo = NodeCreate(newObj,it->curr);
 		((wordNPtr)newo->object)->fileList=flist;
-		FileInsert(flist, f); /*insert or increment filenode*/
-
+		FileInsert(flist, f); /*--------------------insert or increment filenode*/		
 		newo->next = it->curr;
 		list->head = newo;
 		SLDestroyIterator(it);
@@ -118,7 +128,6 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 	}
 	while(it->curr != NULL){ /*---------------------loop to move iterator*/
 		compare = (*list->funct)(newObj, it->curr->object);	
-		printf("%d\n",compare);
 		if(compare <0) /*---------------------------if the iterator is less than the new object, insert it*/
 		{
 			break;
@@ -127,25 +136,21 @@ int SLInsert(SortedListPtr list, void *newObj, char* filename)
 		{
 			it = SLNextItem(it);
 		}
-		else /*-------------------------------------if they're the same/equal*/
+		else /*-------------------------------------if the words are the same/equal*/
 		{
 			/*find FILE and insert it*/
-			flist=((wordNPtr)it->curr->object)->fileList;
+			flist = ((wordNPtr)it->curr->object)->fileList;
 			FileInsert(flist,f);
-
-			printf("ALREADY INSERTED.\n");
+			
 			SLDestroyIterator(it);
-			free(f);
 			return 1;				
 		}
 	}
-	newo=NodeCreate(newObj,it->curr);
-	
-	it->prev->next =  newo;/*smallest; put the new node on the end*/
-
+	flist = SLCreate(compareFiles);
+	newo=NodeCreate(newObj,it->curr);	
+	it->prev->next =  newo;/*-----------------------smallest; put the new node on the end*/
 	((wordNPtr)newo->object)->fileList=flist;
-	FileInsert(flist, f);
-
+	FileInsert(flist, f);	
 	SLDestroyIterator(it);
 	return 1;
 }
@@ -160,45 +165,43 @@ int FileInsert(SortedListPtr list, void *newObj)
 	NodePtr newo;
 	SortedListIteratorPtr it;
 	fileNPtr temp;
-
-	printf("FINSERT\n");
-
+	
+	list->funct = compareFiles;
+	
 	it = SLCreateIterator(list);
 	if (it == NULL){
-		printf("DOESN'T EXIST\n");
 		SLDestroyIterator(it);
 		return 0;
 	}
-
-	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) < 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
+	
+	if (it->prev == NULL /*|| (*list->funct)(newObj, it->curr->object) < 0*/) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
 	{
-		printf("NULL\n");
 		newo = NodeCreate(newObj,it->curr);
 		newo->next = it->curr;
 		list->head = newo;
 		SLDestroyIterator(it);
 		return 1;
 	}	
-
-	while(it->curr != NULL){ /*---------------------loop to move iterator*/
-		compare = (*list->funct)(newObj, it->curr->object);		
-		printf("WHILE\n");
-		if(compare == 0) /*-------------------------------------if they're the same/equal*/
+	while(it->curr != NULL){ /*---------------------------------loop to move iterator*/
+		compare = (*list->funct)(newObj, it->curr->object);
+		if(compare == 0) /*-------------------------------------if the file already exists in the word's list*/
 		{
 			temp = (fileNPtr)it->curr->object;
 			temp->wordCount++;
 			if(strcmp(((fileNPtr)it->prev->object)->fileName,((fileNPtr)it->curr->object)->fileName) == 0){
-				printf("Same previ and curr!\n");
+				list->head = list->head->next;
+				ReInsert(list, temp);
+				SLDestroyIterator(it);
+				return 1;
 			}
 			it->prev->next = it->curr->next;
-			//ReInsert(list, temp);
+			ReInsert(list, temp);
 			SLDestroyIterator(it);
 			return 1;				
 		}
 		it = SLNextItem(it);
 	}
-	printf("OTHER\n");
-	it->prev->next = NodeCreate(newObj,it->curr); /*smallest; put the new node on the end*/
+	it->prev->next = NodeCreate(newObj,it->curr); /*------------smallest; put the new node on the end*/
 	SLDestroyIterator(it);
 	return 1;
 }
@@ -206,24 +209,17 @@ int FileInsert(SortedListPtr list, void *newObj)
 
 int ReInsert(SortedListPtr list, void *newObj)
 {
-	/*go through list and compare each by the number of occurences
-	 * when the current is greater than the next number of occurrences, 
-	 * then insert it*/
-
 	int compare;
 	NodePtr newo;
 	SortedListIteratorPtr it;
-	/*list->funct =*/ /*num compare*/
-
-	printf("REINSERT\n");
-
+	
+	list->funct = compareOcc;
 	it = SLCreateIterator(list);
 	if (it == NULL){
 		SLDestroyIterator(it);
 		return 0;
 	}
-
-	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) > 0) /*if the iterator's previous is NULL or if the new object is greater than the iterator*/
+	if (it->prev == NULL || (*list->funct)(newObj, it->curr->object) > 0)
 	{
 		newo = NodeCreate(newObj,it->curr);
 		newo->next = it->curr;
@@ -231,18 +227,18 @@ int ReInsert(SortedListPtr list, void *newObj)
 		SLDestroyIterator(it);
 		return 1;
 	}	
-	while(it->curr != NULL){ /*---------------------loop to move iterator*/
+	while(it->curr != NULL){ 
 		compare = (*list->funct)(newObj, it->curr->object);		
-		if(compare >0) /*---------------------------if the iterator is less than the new object, insert it*/
+		if(compare >=0)
 		{
 			break;
 		}
-		else /*---------------------if the iterator is greater than the new object, move the iterator to the next node(s)*/
+		else
 		{
 			it = SLNextItem(it);
 		}		
 	}
-	it->prev->next = NodeCreate(newObj,it->curr); /*smallest; put the new node on the end*/
+	it->prev->next = NodeCreate(newObj,it->curr);
 	SLDestroyIterator(it);
 	return 1;
 }

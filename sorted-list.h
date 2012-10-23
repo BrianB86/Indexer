@@ -7,6 +7,7 @@
 #include <stdlib.h>
 
 typedef int (*CompareFuncT)(void *, void *);
+int compareOcc(void* num1, void * num2);
 
 /* word type obj holds a nodePtr to file list, 
  * file type node holds an integer word count */

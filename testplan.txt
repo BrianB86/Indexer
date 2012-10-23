@@ -1,0 +1,5460 @@
+Test cases for pa3 (Indexer)
+Lara Martin, Elana Braff, and Brian Battell
+
+The following txt files can be found in our submitted tgz file.
+
+NOTE: Files starting with . or .. or files ending with ~ are only read when specified.
+Otherwise, they are ignored (when the directories they are in are named).
+
+
+
+----------------------------------------------------------------------------
+./indexer "o.txt" "blah.txt"
+
+Error accessing file or Directory blah.txt (cannot find file)
+----------------------------------------------------------------------------
+./indexer "o.txt" "example/u/f.txt~"
+<list> the
+example/u/f.txt~ 3
+</list>
+----------------------------------------------------------------------------
+./indexer "output.txt" "test.txt"
+<list> dog
+test.txt 1
+</list>
+<list> fox353
+test.txt 1
+</list>
+<list> jumped
+test.txt 1
+</list>
+<list> lazy
+test.txt 1
+</list>
+<list> over
+test.txt 1
+</list>
+<list> quickbrown
+test.txt 1
+</list>
+<list> the
+test.txt 2
+</list>
+----------------------------------------------------------------------------
+./indexer "output.txt" "test2.txt"
+<list> for
+test2.txt 1
+</list>
+<list> hello
+test2.txt 1
+</list>
+<list> is
+test2.txt 1
+</list>
+<list> it
+test2.txt 1
+</list>
+<list> looking
+test2.txt 1
+</list>
+<list> me
+test2.txt 1
+</list>
+<list> re
+test2.txt 1
+</list>
+<list> you
+test2.txt 1
+</list
+----------------------------------------------------------------------------
+./indexer "output.txt" "test3.txt"
+<list> a
+test3.txt 2
+</list>
+<list> and
+test3.txt 1
+</list>
+<list> brian
+test3.txt 1
+</list>
+<list> eat
+test3.txt 1
+</list>
+<list> elana
+test3.txt 1
+</list>
+<list> gazooks
+test3.txt 1
+</list>
+<list> lara
+test3.txt 1
+</list>
+<list> largest
+test3.txt 1
+</list>
+<list> monster
+test3.txt 1
+</list>
+<list> pizza
+test3.txt 1
+</list>
+<list> s
+test3.txt 1
+</list>
+<list> said
+test3.txt 1
+</list>
+<list> she
+test3.txt 1
+</list>
+<list> smirk
+test3.txt 1
+</list>
+<list> the
+test3.txt 1
+</list>
+<list> to
+test3.txt 1
+</list>
+<list> went
+test3.txt 1
+</list>
+<list> with
+test3.txt 2
+</list>
+<list> world
+test3.txt 1
+</list>
+----------------------------------------------------------------------------
+./indexer "output2.txt" "example/test.txt"
+<list> dog
+test.txt 1
+</list>
+<list> fox353
+test.txt 1
+</list>
+<list> jumped
+test.txt 1
+</list>
+<list> lazy
+test.txt 1
+</list>
+<list> over
+test.txt 1
+</list>
+<list> quickbrown
+test.txt 1
+</list>
+<list> the
+test.txt 2
+</list>
+----------------------------------------------------------------------------
+./indexer "out.txt" "Indexer/example/test.txt"
+<list> dog
+test.txt 1
+</list>
+<list> fox353
+test.txt 1
+</list>
+<list> jumped
+test.txt 1
+</list>
+<list> lazy
+test.txt 1
+</list>
+<list> over
+test.txt 1
+</list>
+<list> quickbrown
+test.txt 1
+</list>
+<list> the
+test.txt 2
+</list>
+----------------------------------------------------------------------------
+./indexer "something.txt" "example/u"
+<list> of
+example/u/i.txt 1
+</list>
+<list> the
+example/u/f.txt 3
+example/u/i.txt 1
+</list>
+----------------------------------------------------------------------------
+./indexer "something.txt" "example/test"
+<list> a
+example/test/test3.txt 2
+</list>
+<list> and
+example/test/test3.txt 1
+</list>
+<list> brian
+example/test/test3.txt 1
+</list>
+<list> dog
+example/test/test.txt 1
+</list>
+<list> eat
+example/test/test3.txt 1
+</list>
+<list> elana
+example/test/test3.txt 1
+</list>
+<list> for
+example/test/test2.txt 1
+</list>
+<list> fox353
+example/test/test.txt 1
+</list>
+<list> gazooks
+example/test/test3.txt 1
+</list>
+<list> hello
+example/test/test2.txt 1
+</list>
+<list> is
+example/test/test2.txt 1
+</list>
+<list> it
+example/test/test2.txt 1
+</list>
+<list> jumps
+example/test/test.txt 1
+</list>
+<list> lara
+example/test/test3.txt 1
+</list>
+<list> largest
+example/test/test3.txt 1
+</list>
+<list> lazy
+example/test/test.txt 1
+</list>
+<list> looking
+example/test/test2.txt 1
+</list>
+<list> me
+example/test/test2.txt 1
+</list>
+<list> monster
+example/test/test3.txt 1
+</list>
+<list> over
+example/test/test.txt 1
+</list>
+<list> pizza
+example/test/test3.txt 1
+</list>
+<list> quickbrown
+example/test/test.txt 1
+</list>
+<list> re
+example/test/test2.txt 1
+</list>
+<list> s
+example/test/test3.txt 1
+</list>
+<list> said
+example/test/test3.txt 1
+</list>
+<list> she
+example/test/test3.txt 1
+</list>
+<list> smirk
+example/test/test3.txt 1
+</list>
+<list> the
+example/test/test.txt 2
+example/test/test3.txt 1
+</list>
+<list> to
+example/test/test3.txt 1
+</list>
+<list> went
+example/test/test3.txt 1
+</list>
+<list> with
+example/test/test3.txt 2
+</list>
+<list> world
+example/test/test3.txt 1
+</list>
+<list> you
+example/test/test2.txt 1
+</list>
+----------------------------------------------------------------------------
+./indexer "output.txt" "example/Pride.txt"
+<list> a
+example/Pride.txt 63
+</list>
+<list> about
+example/Pride.txt 7
+</list>
+<list> above
+example/Pride.txt 2
+</list>
+<list> abuse
+example/Pride.txt 1
+</list>
+<list> accept
+example/Pride.txt 2
+</list>
+<list> accomplished
+example/Pride.txt 1
+</list>
+<list> account
+example/Pride.txt 1
+</list>
+<list> acknowledged
+example/Pride.txt 1
+</list>
+<list> acquaintance
+example/Pride.txt 4
+</list>
+<list> acquainted
+example/Pride.txt 3
+</list>
+<list> act
+example/Pride.txt 1
+</list>
+<list> actually
+example/Pride.txt 2
+</list>
+<list> added
+example/Pride.txt 1
+</list>
+<list> addressed
+example/Pride.txt 1
+</list>
+<list> adjusting
+example/Pride.txt 1
+</list>
+<list> admiration
+example/Pride.txt 1
+</list>
+<list> admire
+example/Pride.txt 1
+</list>
+<list> admired
+example/Pride.txt 2
+</list>
+<list> admitted
+example/Pride.txt 1
+</list>
+<list> advantage
+example/Pride.txt 2
+</list>
+<list> advice
+example/Pride.txt 1
+</list>
+<list> affect
+example/Pride.txt 1
+</list>
+<list> afraid
+example/Pride.txt 1
+</list>
+<list> after
+example/Pride.txt 4
+</list>
+<list> afterwards
+example/Pride.txt 1
+</list>
+<list> again
+example/Pride.txt 3
+</list>
+<list> against
+example/Pride.txt 2
+</list>
+<list> agree
+example/Pride.txt 1
+</list>
+<list> agreeable
+example/Pride.txt 2
+</list>
+<list> agreed
+example/Pride.txt 1
+</list>
+<list> ah
+example/Pride.txt 1
+</list>
+<list> air
+example/Pride.txt 1
+</list>
+<list> all
+example/Pride.txt 16
+</list>
+<list> already
+example/Pride.txt 1
+</list>
+<list> altogether
+example/Pride.txt 2
+</list>
+<list> always
+example/Pride.txt 4
+</list>
+<list> am
+example/Pride.txt 12
+</list>
+<list> amends
+example/Pride.txt 1
+</list>
+<list> amiable
+example/Pride.txt 1
+</list>
+<list> among
+example/Pride.txt 2
+</list>
+<list> amongst
+example/Pride.txt 1
+</list>
+<list> amusement
+example/Pride.txt 1
+</list>
+<list> an
+example/Pride.txt 10
+</list>
+<list> ancle
+example/Pride.txt 1
+</list>
+<list> and
+example/Pride.txt 92
+</list>
+<list> angry
+example/Pride.txt 1
+</list>
+<list> another
+example/Pride.txt 4
+</list>
+<list> answer
+example/Pride.txt 2
+</list>
+<list> any
+example/Pride.txt 11
+</list>
+<list> are
+example/Pride.txt 19
+</list>
+<list> arrival
+example/Pride.txt 1
+</list>
+<list> arrived
+example/Pride.txt 1
+</list>
+<list> as
+example/Pride.txt 25
+</list>
+<list> ascertaining
+example/Pride.txt 1
+</list>
+<list> ask
+example/Pride.txt 3
+</list>
+<list> asked
+example/Pride.txt 3
+</list>
+<list> assemblies
+example/Pride.txt 1
+</list>
+<list> assembly
+example/Pride.txt 4
+</list>
+<list> assistance
+example/Pride.txt 1
+</list>
+<list> assure
+example/Pride.txt 3
+</list>
+<list> assuring
+example/Pride.txt 1
+</list>
+<list> astonishment
+example/Pride.txt 1
+</list>
+<list> at
+example/Pride.txt 20
+</list>
+<list> attacked
+example/Pride.txt 1
+</list>
+<list> attention
+example/Pride.txt 1
+</list>
+<list> aye
+example/Pride.txt 1
+</list>
+<list> back
+example/Pride.txt 1
+</list>
+<list> ball
+example/Pride.txt 7
+</list>
+<list> barefaced
+example/Pride.txt 1
+</list>
+<list> be
+example/Pride.txt 33
+</list>
+<list> beautiful
+example/Pride.txt 2
+</list>
+<list> beauty
+example/Pride.txt 4
+</list>
+<list> been
+example/Pride.txt 9
+</list>
+<list> before
+example/Pride.txt 4
+</list>
+<list> began
+example/Pride.txt 3
+</list>
+<list> behaviour
+example/Pride.txt 1
+</list>
+<list> beheld
+example/Pride.txt 1
+</list>
+<list> behind
+example/Pride.txt 1
+</list>
+<list> being
+example/Pride.txt 5
+</list>
+<list> believe
+example/Pride.txt 1
+</list>
+<list> bennet
+example/Pride.txt 28
+</list>
+<list> best
+example/Pride.txt 1
+</list>
+<list> better
+example/Pride.txt 4
+</list>
+<list> between
+example/Pride.txt 2
+</list>
+<list> bingley
+example/Pride.txt 27
+</list>
+<list> bit
+example/Pride.txt 1
+</list>
+<list> bitterness
+example/Pride.txt 1
+</list>
+<list> black
+example/Pride.txt 1
+</list>
+<list> blue
+example/Pride.txt 1
+</list>
+<list> body
+example/Pride.txt 2
+</list>
+<list> book
+example/Pride.txt 1
+</list>
+<list> books
+example/Pride.txt 1
+</list>
+<list> boulanger
+example/Pride.txt 1
+</list>
+<list> branch
+example/Pride.txt 1
+</list>
+<list> bring
+example/Pride.txt 1
+</list>
+<list> brother
+example/Pride.txt 1
+</list>
+<list> brought
+example/Pride.txt 1
+</list>
+<list> business
+example/Pride.txt 2
+</list>
+<list> but
+example/Pride.txt 26
+</list>
+<list> by
+example/Pride.txt 16
+</list>
+<list> c
+example/Pride.txt 1
+</list>
+<list> called
+example/Pride.txt 1
+</list>
+<list> came
+example/Pride.txt 2
+</list>
+<list> can
+example/Pride.txt 10
+</list>
+<list> cannot
+example/Pride.txt 3
+</list>
+<list> caprice
+example/Pride.txt 1
+</list>
+<list> care
+example/Pride.txt 1
+</list>
+<list> cases
+example/Pride.txt 1
+</list>
+<list> catching
+example/Pride.txt 1
+</list>
+<list> catherine
+example/Pride.txt 1
+</list>
+<list> certain
+example/Pride.txt 1
+</list>
+<list> certainly
+example/Pride.txt 4
+</list>
+<list> chaise
+example/Pride.txt 1
+</list>
+<list> chance
+example/Pride.txt 1
+</list>
+<list> character
+example/Pride.txt 2
+</list>
+<list> charming
+example/Pride.txt 1
+</list>
+<list> children
+example/Pride.txt 1
+</list>
+<list> chuse
+example/Pride.txt 1
+</list>
+<list> chuses
+example/Pride.txt 1
+</list>
+<list> circulation
+example/Pride.txt 1
+</list>
+<list> circumspection
+example/Pride.txt 1
+</list>
+<list> closed
+example/Pride.txt 1
+</list>
+<list> coat
+example/Pride.txt 1
+</list>
+<list> coldly
+example/Pride.txt 1
+</list>
+<list> come
+example/Pride.txt 5
+</list>
+<list> comers
+example/Pride.txt 1
+</list>
+<list> comes
+example/Pride.txt 2
+</list>
+<list> comforted
+example/Pride.txt 1
+</list>
+<list> company
+example/Pride.txt 1
+</list>
+<list> compared
+example/Pride.txt 1
+</list>
+<list> compassion
+example/Pride.txt 3
+</list>
+<list> conceited
+example/Pride.txt 1
+</list>
+<list> conjecturing
+example/Pride.txt 1
+</list>
+<list> consent
+example/Pride.txt 1
+</list>
+<list> consequence
+example/Pride.txt 1
+</list>
+<list> consequently
+example/Pride.txt 1
+</list>
+<list> consider
+example/Pride.txt 2
+</list>
+<list> consideration
+example/Pride.txt 1
+</list>
+<list> considered
+example/Pride.txt 1
+</list>
+<list> consisted
+example/Pride.txt 1
+</list>
+<list> contain
+example/Pride.txt 1
+</list>
+<list> continued
+example/Pride.txt 2
+</list>
+<list> contrast
+example/Pride.txt 1
+</list>
+<list> conversation
+example/Pride.txt 1
+</list>
+<list> cordial
+example/Pride.txt 1
+</list>
+<list> cough
+example/Pride.txt 2
+</list>
+<list> coughing
+example/Pride.txt 1
+</list>
+<list> coughs
+example/Pride.txt 1
+</list>
+<list> could
+example/Pride.txt 7
+</list>
+<list> countenance
+example/Pride.txt 2
+</list>
+<list> courses
+example/Pride.txt 1
+</list>
+<list> cousin
+example/Pride.txt 1
+</list>
+<list> creature
+example/Pride.txt 2
+</list>
+<list> credit
+example/Pride.txt 1
+</list>
+<list> cried
+example/Pride.txt 6
+</list>
+<list> crown
+example/Pride.txt 1
+</list>
+<list> curiosity
+example/Pride.txt 1
+</list>
+<list> dance
+example/Pride.txt 8
+</list>
+<list> danced
+example/Pride.txt 7
+</list>
+<list> dances
+example/Pride.txt 1
+</list>
+<list> dancing
+example/Pride.txt 2
+</list>
+<list> darcy
+example/Pride.txt 7
+</list>
+<list> dare
+example/Pride.txt 4
+</list>
+<list> daughter
+example/Pride.txt 2
+</list>
+<list> daughters
+example/Pride.txt 8
+</list>
+<list> day
+example/Pride.txt 5
+</list>
+<list> days
+example/Pride.txt 1
+</list>
+<list> deal
+example/Pride.txt 1
+</list>
+<list> dear
+example/Pride.txt 14
+</list>
+<list> decided
+example/Pride.txt 2
+</list>
+<list> declare
+example/Pride.txt 1
+</list>
+<list> declared
+example/Pride.txt 1
+</list>
+<list> decline
+example/Pride.txt 1
+</list>
+<list> declined
+example/Pride.txt 1
+</list>
+<list> deep
+example/Pride.txt 1
+</list>
+<list> deferred
+example/Pride.txt 1
+</list>
+<list> deigned
+example/Pride.txt 1
+</list>
+<list> delight
+example/Pride.txt 1
+</list>
+<list> delighted
+example/Pride.txt 4
+</list>
+<list> delightful
+example/Pride.txt 2
+</list>
+<list> depend
+example/Pride.txt 2
+</list>
+<list> derbyshire
+example/Pride.txt 1
+</list>
+<list> description
+example/Pride.txt 2
+</list>
+<list> design
+example/Pride.txt 2
+</list>
+<list> desire
+example/Pride.txt 1
+</list>
+<list> determined
+example/Pride.txt 1
+</list>
+<list> determining
+example/Pride.txt 1
+</list>
+<list> detest
+example/Pride.txt 2
+</list>
+<list> develope
+example/Pride.txt 1
+</list>
+<list> did
+example/Pride.txt 2
+</list>
+<list> different
+example/Pride.txt 1
+</list>
+<list> difficult
+example/Pride.txt 1
+</list>
+<list> dinner
+example/Pride.txt 2
+</list>
+<list> disagreeable
+example/Pride.txt 3
+</list>
+<list> disappointed
+example/Pride.txt 1
+</list>
+<list> disclosed
+example/Pride.txt 1
+</list>
+<list> disconcerted
+example/Pride.txt 1
+</list>
+<list> discontented
+example/Pride.txt 1
+</list>
+<list> discovered
+example/Pride.txt 1
+</list>
+<list> discretion
+example/Pride.txt 1
+</list>
+<list> disgust
+example/Pride.txt 1
+</list>
+<list> dislike
+example/Pride.txt 1
+</list>
+<list> dispatched
+example/Pride.txt 1
+</list>
+<list> disposition
+example/Pride.txt 1
+</list>
+<list> distant
+example/Pride.txt 1
+</list>
+<list> distinguished
+example/Pride.txt 1
+</list>
+<list> do
+example/Pride.txt 16
+</list>
+<list> does
+example/Pride.txt 2
+</list>
+<list> don
+example/Pride.txt 1
+</list>
+<list> door
+example/Pride.txt 1
+</list>
+<list> down
+example/Pride.txt 4
+</list>
+<list> downs
+example/Pride.txt 1
+</list>
+<list> draw
+example/Pride.txt 1
+</list>
+<list> dresses
+example/Pride.txt 1
+</list>
+<list> drew
+example/Pride.txt 1
+</list>
+<list> during
+example/Pride.txt 1
+</list>
+<list> earliest
+example/Pride.txt 1
+</list>
+<list> early
+example/Pride.txt 1
+</list>
+<list> easy
+example/Pride.txt 1
+</list>
+<list> either
+example/Pride.txt 1
+</list>
+<list> eldest
+example/Pride.txt 2
+</list>
+<list> elegant
+example/Pride.txt 1
+</list>
+<list> elizabeth
+example/Pride.txt 5
+</list>
+<list> else
+example/Pride.txt 1
+</list>
+<list> eluded
+example/Pride.txt 1
+</list>
+<list> emphatic
+example/Pride.txt 1
+</list>
+<list> employed
+example/Pride.txt 1
+</list>
+<list> end
+example/Pride.txt 2
+</list>
+<list> enduring
+example/Pride.txt 1
+</list>
+<list> engage
+example/Pride.txt 1
+</list>
+<list> engaged
+example/Pride.txt 1
+</list>
+<list> england
+example/Pride.txt 1
+</list>
+<list> enjoy
+example/Pride.txt 1
+</list>
+<list> enough
+example/Pride.txt 5
+</list>
+<list> enquired
+example/Pride.txt 1
+</list>
+<list> entered
+example/Pride.txt 2
+</list>
+<list> entering
+example/Pride.txt 1
+</list>
+<list> entertained
+example/Pride.txt 2
+</list>
+<list> entrance
+example/Pride.txt 1
+</list>
+<list> equally
+example/Pride.txt 1
+</list>
+<list> escape
+example/Pride.txt 1
+</list>
+<list> establishment
+example/Pride.txt 1
+</list>
+<list> estate
+example/Pride.txt 1
+</list>
+<list> evening
+example/Pride.txt 8
+</list>
+<list> event
+example/Pride.txt 1
+</list>
+<list> ever
+example/Pride.txt 3
+</list>
+<list> every
+example/Pride.txt 4
+</list>
+<list> exaggeration
+example/Pride.txt 1
+</list>
+<list> excellent
+example/Pride.txt 2
+</list>
+<list> excessively
+example/Pride.txt 1
+</list>
+<list> exclamation
+example/Pride.txt 1
+</list>
+<list> expectations
+example/Pride.txt 1
+</list>
+<list> expected
+example/Pride.txt 1
+</list>
+<list> experience
+example/Pride.txt 1
+</list>
+<list> extracts
+example/Pride.txt 1
+</list>
+<list> extraordinary
+example/Pride.txt 1
+</list>
+<list> extremely
+example/Pride.txt 1
+</list>
+<list> eye
+example/Pride.txt 1
+</list>
+<list> fall
+example/Pride.txt 1
+</list>
+<list> falling
+example/Pride.txt 1
+</list>
+<list> families
+example/Pride.txt 1
+</list>
+<list> family
+example/Pride.txt 1
+</list>
+<list> fancied
+example/Pride.txt 1
+</list>
+<list> fancy
+example/Pride.txt 1
+</list>
+<list> fancying
+example/Pride.txt 1
+</list>
+<list> fashion
+example/Pride.txt 1
+</list>
+<list> fastidious
+example/Pride.txt 1
+</list>
+<list> father
+example/Pride.txt 4
+</list>
+<list> fatigued
+example/Pride.txt 1
+</list>
+<list> favourable
+example/Pride.txt 1
+</list>
+<list> fear
+example/Pride.txt 1
+</list>
+<list> fears
+example/Pride.txt 1
+</list>
+<list> features
+example/Pride.txt 1
+</list>
+<list> feelings
+example/Pride.txt 2
+</list>
+<list> felt
+example/Pride.txt 1
+</list>
+<list> few
+example/Pride.txt 3
+</list>
+<list> fifth
+example/Pride.txt 1
+</list>
+<list> figure
+example/Pride.txt 1
+</list>
+<list> find
+example/Pride.txt 1
+</list>
+<list> fine
+example/Pride.txt 4
+</list>
+<list> finery
+example/Pride.txt 1
+</list>
+<list> first
+example/Pride.txt 4
+</list>
+<list> five
+example/Pride.txt 6
+</list>
+<list> fixed
+example/Pride.txt 1
+</list>
+<list> flatter
+example/Pride.txt 1
+</list>
+<list> flying
+example/Pride.txt 1
+</list>
+<list> followed
+example/Pride.txt 2
+</list>
+<list> following
+example/Pride.txt 2
+</list>
+<list> fond
+example/Pride.txt 1
+</list>
+<list> for
+example/Pride.txt 38
+</list>
+<list> forbidding
+example/Pride.txt 1
+</list>
+<list> forget
+example/Pride.txt 1
+</list>
+<list> forms
+example/Pride.txt 1
+</list>
+<list> fortnight
+example/Pride.txt 3
+</list>
+<list> fortunate
+example/Pride.txt 2
+</list>
+<list> fortune
+example/Pride.txt 3
+</list>
+<list> found
+example/Pride.txt 2
+</list>
+<list> four
+example/Pride.txt 3
+</list>
+<list> fourth
+example/Pride.txt 1
+</list>
+<list> fretfully
+example/Pride.txt 1
+</list>
+<list> friend
+example/Pride.txt 5
+</list>
+<list> friends
+example/Pride.txt 2
+</list>
+<list> from
+example/Pride.txt 7
+</list>
+<list> gave
+example/Pride.txt 1
+</list>
+<list> general
+example/Pride.txt 3
+</list>
+<list> gentleman
+example/Pride.txt 1
+</list>
+<list> gentlemanlike
+example/Pride.txt 1
+</list>
+<list> gentlemen
+example/Pride.txt 3
+</list>
+<list> get
+example/Pride.txt 3
+</list>
+<list> girl
+example/Pride.txt 2
+</list>
+<list> girls
+example/Pride.txt 9
+</list>
+<list> give
+example/Pride.txt 2
+</list>
+<list> given
+example/Pride.txt 1
+</list>
+<list> giving
+example/Pride.txt 2
+</list>
+<list> glad
+example/Pride.txt 2
+</list>
+<list> go
+example/Pride.txt 5
+</list>
+<list> god
+example/Pride.txt 1
+</list>
+<list> going
+example/Pride.txt 1
+</list>
+<list> gone
+example/Pride.txt 2
+</list>
+<list> good
+example/Pride.txt 8
+</list>
+<list> got
+example/Pride.txt 1
+</list>
+<list> gown
+example/Pride.txt 1
+</list>
+<list> gratified
+example/Pride.txt 1
+</list>
+<list> great
+example/Pride.txt 4
+</list>
+<list> grieved
+example/Pride.txt 1
+</list>
+<list> grown
+example/Pride.txt 1
+</list>
+<list> had
+example/Pride.txt 36
+</list>
+<list> half
+example/Pride.txt 4
+</list>
+<list> hand
+example/Pride.txt 1
+</list>
+<list> handsome
+example/Pride.txt 8
+</list>
+<list> handsomer
+example/Pride.txt 1
+</list>
+<list> happily
+example/Pride.txt 1
+</list>
+<list> has
+example/Pride.txt 8
+</list>
+<list> hat
+example/Pride.txt 1
+</list>
+<list> hate
+example/Pride.txt 1
+</list>
+<list> have
+example/Pride.txt 22
+</list>
+<list> having
+example/Pride.txt 3
+</list>
+<list> he
+example/Pride.txt 60
+</list>
+<list> hear
+example/Pride.txt 2
+</list>
+<list> heard
+example/Pride.txt 4
+</list>
+<list> hearing
+example/Pride.txt 2
+</list>
+<list> heart
+example/Pride.txt 1
+</list>
+<list> hearty
+example/Pride.txt 1
+</list>
+<list> heaven
+example/Pride.txt 1
+</list>
+<list> her
+example/Pride.txt 41
+</list>
+<list> here
+example/Pride.txt 4
+</list>
+<list> herself
+example/Pride.txt 4
+</list>
+<list> hertfordshire
+example/Pride.txt 1
+</list>
+<list> high
+example/Pride.txt 2
+</list>
+<list> highly
+example/Pride.txt 1
+</list>
+<list> him
+example/Pride.txt 28
+</list>
+<list> himself
+example/Pride.txt 3
+</list>
+<list> his
+example/Pride.txt 46
+</list>
+<list> honour
+example/Pride.txt 3
+</list>
+<list> hope
+example/Pride.txt 2
+</list>
+<list> hoped
+example/Pride.txt 2
+</list>
+<list> hopes
+example/Pride.txt 2
+</list>
+<list> horrid
+example/Pride.txt 1
+</list>
+<list> horse
+example/Pride.txt 1
+</list>
+<list> house
+example/Pride.txt 1
+</list>
+<list> housekeeping
+example/Pride.txt 1
+</list>
+<list> how
+example/Pride.txt 13
+</list>
+<list> however
+example/Pride.txt 4
+</list>
+<list> humour
+example/Pride.txt 2
+</list>
+<list> humoured
+example/Pride.txt 1
+</list>
+<list> hurst
+example/Pride.txt 3
+</list>
+<list> husband
+example/Pride.txt 4
+</list>
+<list> hypocritical
+example/Pride.txt 1
+</list>
+<list> i
+example/Pride.txt 64
+</list>
+<list> idea
+example/Pride.txt 1
+</list>
+<list> ideas
+example/Pride.txt 1
+</list>
+<list> if
+example/Pride.txt 7
+</list>
+<list> ignorant
+example/Pride.txt 1
+</list>
+<list> ill
+example/Pride.txt 1
+</list>
+<list> imagine
+example/Pride.txt 1
+</list>
+<list> immediately
+example/Pride.txt 1
+</list>
+<list> impatiently
+example/Pride.txt 2
+</list>
+<list> impossible
+example/Pride.txt 4
+</list>
+<list> in
+example/Pride.txt 43
+</list>
+<list> indeed
+example/Pride.txt 3
+</list>
+<list> information
+example/Pride.txt 1
+</list>
+<list> ingenious
+example/Pride.txt 1
+</list>
+<list> inhabitants
+example/Pride.txt 1
+</list>
+<list> instead
+example/Pride.txt 1
+</list>
+<list> insufficient
+example/Pride.txt 1
+</list>
+<list> insupportable
+example/Pride.txt 1
+</list>
+<list> intelligence
+example/Pride.txt 1
+</list>
+<list> intended
+example/Pride.txt 1
+</list>
+<list> interrupted
+example/Pride.txt 1
+</list>
+<list> into
+example/Pride.txt 3
+</list>
+<list> introduce
+example/Pride.txt 4
+</list>
+<list> introduced
+example/Pride.txt 2
+</list>
+<list> introduction
+example/Pride.txt 1
+</list>
+<list> invitation
+example/Pride.txt 3
+</list>
+<list> is
+example/Pride.txt 31
+</list>
+<list> it
+example/Pride.txt 34
+</list>
+<list> its
+example/Pride.txt 1
+</list>
+<list> jane
+example/Pride.txt 6
+</list>
+<list> join
+example/Pride.txt 1
+</list>
+<list> joke
+example/Pride.txt 1
+</list>
+<list> joy
+example/Pride.txt 1
+</list>
+<list> just
+example/Pride.txt 3
+</list>
+<list> keep
+example/Pride.txt 1
+</list>
+<list> kindness
+example/Pride.txt 2
+</list>
+<list> king
+example/Pride.txt 1
+</list>
+<list> kingdom
+example/Pride.txt 1
+</list>
+<list> kitty
+example/Pride.txt 4
+</list>
+<list> knew
+example/Pride.txt 2
+</list>
+<list> know
+example/Pride.txt 12
+</list>
+<list> knowledge
+example/Pride.txt 1
+</list>
+<list> known
+example/Pride.txt 2
+</list>
+<list> lace
+example/Pride.txt 1
+</list>
+<list> ladies
+example/Pride.txt 7
+</list>
+<list> lady
+example/Pride.txt 6
+</list>
+<list> laid
+example/Pride.txt 1
+</list>
+<list> large
+example/Pride.txt 6
+</list>
+<list> last
+example/Pride.txt 4
+</list>
+<list> law
+example/Pride.txt 1
+</list>
+<list> learnt
+example/Pride.txt 1
+</list>
+<list> least
+example/Pride.txt 1
+</list>
+<list> left
+example/Pride.txt 1
+</list>
+<list> less
+example/Pride.txt 1
+</list>
+<list> let
+example/Pride.txt 3
+</list>
+<list> library
+example/Pride.txt 1
+</list>
+<list> life
+example/Pride.txt 4
+</list>
+<list> like
+example/Pride.txt 4
+</list>
+<list> likely
+example/Pride.txt 1
+</list>
+<list> likes
+example/Pride.txt 1
+</list>
+<list> lines
+example/Pride.txt 1
+</list>
+<list> little
+example/Pride.txt 6
+</list>
+<list> live
+example/Pride.txt 1
+</list>
+<list> lived
+example/Pride.txt 1
+</list>
+<list> lively
+example/Pride.txt 3
+</list>
+<list> lizzy
+example/Pride.txt 7
+</list>
+<list> london
+example/Pride.txt 2
+</list>
+<list> long
+example/Pride.txt 6
+</list>
+<list> longbourn
+example/Pride.txt 1
+</list>
+<list> looked
+example/Pride.txt 4
+</list>
+<list> looking
+example/Pride.txt 2
+</list>
+<list> lose
+example/Pride.txt 1
+</list>
+<list> love
+example/Pride.txt 3
+</list>
+<list> loved
+example/Pride.txt 1
+</list>
+<list> lucas
+example/Pride.txt 5
+</list>
+<list> lydia
+example/Pride.txt 4
+</list>
+<list> m
+example/Pride.txt 1
+</list>
+<list> made
+example/Pride.txt 2
+</list>
+<list> make
+example/Pride.txt 4
+</list>
+<list> making
+example/Pride.txt 1
+</list>
+<list> mama
+example/Pride.txt 1
+</list>
+<list> man
+example/Pride.txt 10
+</list>
+<list> manner
+example/Pride.txt 2
+</list>
+<list> manners
+example/Pride.txt 2
+</list>
+<list> many
+example/Pride.txt 2
+</list>
+<list> maria
+example/Pride.txt 1
+</list>
+<list> married
+example/Pride.txt 3
+</list>
+<list> marrying
+example/Pride.txt 2
+</list>
+<list> mary
+example/Pride.txt 4
+</list>
+<list> matter
+example/Pride.txt 1
+</list>
+<list> may
+example/Pride.txt 6
+</list>
+<list> me
+example/Pride.txt 12
+</list>
+<list> mean
+example/Pride.txt 2
+</list>
+<list> meaning
+example/Pride.txt 1
+</list>
+<list> meant
+example/Pride.txt 1
+</list>
+<list> meet
+example/Pride.txt 1
+</list>
+<list> men
+example/Pride.txt 2
+</list>
+<list> mention
+example/Pride.txt 1
+</list>
+<list> mentioned
+example/Pride.txt 1
+</list>
+<list> merely
+example/Pride.txt 2
+</list>
+<list> met
+example/Pride.txt 1
+</list>
+<list> michaelmas
+example/Pride.txt 1
+</list>
+<list> mien
+example/Pride.txt 1
+</list>
+<list> might
+example/Pride.txt 2
+</list>
+<list> mind
+example/Pride.txt 1
+</list>
+<list> minds
+example/Pride.txt 1
+</list>
+<list> minutes
+example/Pride.txt 3
+</list>
+<list> miss
+example/Pride.txt 5
+</list>
+<list> mistake
+example/Pride.txt 1
+</list>
+<list> mixture
+example/Pride.txt 1
+</list>
+<list> moment
+example/Pride.txt 1
+</list>
+<list> monday
+example/Pride.txt 1
+</list>
+<list> more
+example/Pride.txt 7
+</list>
+<list> morning
+example/Pride.txt 2
+</list>
+<list> morris
+example/Pride.txt 1
+</list>
+<list> morrow
+example/Pride.txt 1
+</list>
+<list> most
+example/Pride.txt 8
+</list>
+<list> mother
+example/Pride.txt 3
+</list>
+<list> mr
+example/Pride.txt 47
+</list>
+<list> mrs
+example/Pride.txt 18
+</list>
+<list> much
+example/Pride.txt 13
+</list>
+<list> must
+example/Pride.txt 10
+</list>
+<list> my
+example/Pride.txt 28
+</list>
+<list> myself
+example/Pride.txt 2
+</list>
+<list> name
+example/Pride.txt 1
+</list>
+<list> near
+example/Pride.txt 1
+</list>
+<list> neglect
+example/Pride.txt 1
+</list>
+<list> neighbour
+example/Pride.txt 1
+</list>
+<list> neighbourhood
+example/Pride.txt 4
+</list>
+<list> nerves
+example/Pride.txt 3
+</list>
+<list> nervous
+example/Pride.txt 1
+</list>
+<list> netherfield
+example/Pride.txt 6
+</list>
+<list> never
+example/Pride.txt 6
+</list>
+<list> new
+example/Pride.txt 2
+</list>
+<list> news
+example/Pride.txt 1
+</list>
+<list> next
+example/Pride.txt 5
+</list>
+<list> nieces
+example/Pride.txt 2
+</list>
+<list> no
+example/Pride.txt 15
+</list>
+<list> noble
+example/Pride.txt 1
+</list>
+<list> nobody
+example/Pride.txt 1
+</list>
+<list> none
+example/Pride.txt 1
+</list>
+<list> nonsense
+example/Pride.txt 4
+</list>
+<list> nor
+example/Pride.txt 1
+</list>
+<list> north
+example/Pride.txt 1
+</list>
+<list> not
+example/Pride.txt 40
+</list>
+<list> nothing
+example/Pride.txt 3
+</list>
+<list> now
+example/Pride.txt 4
+</list>
+<list> number
+example/Pride.txt 1
+</list>
+<list> objection
+example/Pride.txt 1
+</list>
+<list> obliged
+example/Pride.txt 4
+</list>
+<list> observing
+example/Pride.txt 1
+</list>
+<list> occasion
+example/Pride.txt 2
+</list>
+<list> occasionally
+example/Pride.txt 1
+</list>
+<list> odd
+example/Pride.txt 1
+</list>
+<list> of
+example/Pride.txt 90
+</list>
+<list> off
+example/Pride.txt 2
+</list>
+<list> office
+example/Pride.txt 1
+</list>
+<list> often
+example/Pride.txt 1
+</list>
+<list> oh
+example/Pride.txt 6
+</list>
+<list> old
+example/Pride.txt 1
+</list>
+<list> oldest
+example/Pride.txt 1
+</list>
+<list> on
+example/Pride.txt 13
+</list>
+<list> once
+example/Pride.txt 2
+</list>
+<list> one
+example/Pride.txt 14
+</list>
+<list> only
+example/Pride.txt 10
+</list>
+<list> opinion
+example/Pride.txt 1
+</list>
+<list> or
+example/Pride.txt 6
+</list>
+<list> other
+example/Pride.txt 4
+</list>
+<list> others
+example/Pride.txt 2
+</list>
+<list> ought
+example/Pride.txt 2
+</list>
+<list> our
+example/Pride.txt 3
+</list>
+<list> over
+example/Pride.txt 5
+</list>
+<list> overhear
+example/Pride.txt 1
+</list>
+<list> own
+example/Pride.txt 6
+</list>
+<list> paid
+example/Pride.txt 2
+</list>
+<list> park
+example/Pride.txt 1
+</list>
+<list> part
+example/Pride.txt 1
+</list>
+<list> particular
+example/Pride.txt 1
+</list>
+<list> particularly
+example/Pride.txt 1
+</list>
+<list> partner
+example/Pride.txt 3
+</list>
+<list> partners
+example/Pride.txt 2
+</list>
+<list> parts
+example/Pride.txt 1
+</list>
+<list> party
+example/Pride.txt 6
+</list>
+<list> passed
+example/Pride.txt 1
+</list>
+<list> people
+example/Pride.txt 1
+</list>
+<list> perhaps
+example/Pride.txt 2
+</list>
+<list> person
+example/Pride.txt 1
+</list>
+<list> persuade
+example/Pride.txt 1
+</list>
+<list> pieces
+example/Pride.txt 1
+</list>
+<list> place
+example/Pride.txt 2
+</list>
+<list> planned
+example/Pride.txt 1
+</list>
+<list> playful
+example/Pride.txt 1
+</list>
+<list> pleasant
+example/Pride.txt 3
+</list>
+<list> pleasantly
+example/Pride.txt 1
+</list>
+<list> pleased
+example/Pride.txt 2
+</list>
+<list> pleasing
+example/Pride.txt 1
+</list>
+<list> pleasure
+example/Pride.txt 1
+</list>
+<list> poor
+example/Pride.txt 1
+</list>
+<list> popularity
+example/Pride.txt 1
+</list>
+<list> possession
+example/Pride.txt 2
+</list>
+<list> preference
+example/Pride.txt 1
+</list>
+<list> present
+example/Pride.txt 2
+</list>
+<list> press
+example/Pride.txt 1
+</list>
+<list> pretend
+example/Pride.txt 1
+</list>
+<list> pretty
+example/Pride.txt 2
+</list>
+<list> principal
+example/Pride.txt 2
+</list>
+<list> promised
+example/Pride.txt 1
+</list>
+<list> pronounced
+example/Pride.txt 1
+</list>
+<list> property
+example/Pride.txt 1
+</list>
+<list> protested
+example/Pride.txt 1
+</list>
+<list> proud
+example/Pride.txt 1
+</list>
+<list> proudest
+example/Pride.txt 1
+</list>
+<list> punishment
+example/Pride.txt 1
+</list>
+<list> qualities
+example/Pride.txt 1
+</list>
+<list> questions
+example/Pride.txt 1
+</list>
+<list> quick
+example/Pride.txt 1
+</list>
+<list> quickness
+example/Pride.txt 1
+</list>
+<list> quieted
+example/Pride.txt 1
+</list>
+<list> quieter
+example/Pride.txt 1
+</list>
+<list> quite
+example/Pride.txt 7
+</list>
+<list> raised
+example/Pride.txt 1
+</list>
+<list> raptures
+example/Pride.txt 1
+</list>
+<list> rather
+example/Pride.txt 1
+</list>
+<list> read
+example/Pride.txt 1
+</list>
+<list> really
+example/Pride.txt 1
+</list>
+<list> recommend
+example/Pride.txt 1
+</list>
+<list> reflection
+example/Pride.txt 1
+</list>
+<list> regardless
+example/Pride.txt 1
+</list>
+<list> related
+example/Pride.txt 1
+</list>
+<list> remained
+example/Pride.txt 1
+</list>
+<list> replied
+example/Pride.txt 4
+</list>
+<list> reply
+example/Pride.txt 1
+</list>
+<list> report
+example/Pride.txt 3
+</list>
+<list> resentfully
+example/Pride.txt 1
+</list>
+<list> resentment
+example/Pride.txt 1
+</list>
+<list> reserve
+example/Pride.txt 1
+</list>
+<list> respect
+example/Pride.txt 1
+</list>
+<list> rest
+example/Pride.txt 3
+</list>
+<list> return
+example/Pride.txt 3
+</list>
+<list> returned
+example/Pride.txt 3
+</list>
+<list> ridiculous
+example/Pride.txt 1
+</list>
+<list> rightful
+example/Pride.txt 1
+</list>
+<list> rode
+example/Pride.txt 1
+</list>
+<list> room
+example/Pride.txt 9
+</list>
+<list> round
+example/Pride.txt 1
+</list>
+<list> rudeness
+example/Pride.txt 1
+</list>
+<list> s
+example/Pride.txt 9
+</list>
+<list> said
+example/Pride.txt 15
+</list>
+<list> sake
+example/Pride.txt 2
+</list>
+<list> sakes
+example/Pride.txt 1
+</list>
+<list> sarcastic
+example/Pride.txt 1
+</list>
+<list> sat
+example/Pride.txt 1
+</list>
+<list> satisfactory
+example/Pride.txt 1
+</list>
+<list> save
+example/Pride.txt 1
+</list>
+<list> saw
+example/Pride.txt 2
+</list>
+<list> say
+example/Pride.txt 7
+</list>
+<list> says
+example/Pride.txt 1
+</list>
+<list> scarcity
+example/Pride.txt 1
+</list>
+<list> scolding
+example/Pride.txt 1
+</list>
+<list> scrupulous
+example/Pride.txt 1
+</list>
+<list> second
+example/Pride.txt 3
+</list>
+<list> see
+example/Pride.txt 9
+</list>
+<list> seek
+example/Pride.txt 1
+</list>
+<list> seemed
+example/Pride.txt 1
+</list>
+<list> seen
+example/Pride.txt 1
+</list>
+<list> selfish
+example/Pride.txt 1
+</list>
+<list> send
+example/Pride.txt 2
+</list>
+<list> sensible
+example/Pride.txt 1
+</list>
+<list> servants
+example/Pride.txt 1
+</list>
+<list> serving
+example/Pride.txt 1
+</list>
+<list> set
+example/Pride.txt 1
+</list>
+<list> settled
+example/Pride.txt 2
+</list>
+<list> settling
+example/Pride.txt 1
+</list>
+<list> seven
+example/Pride.txt 1
+</list>
+<list> several
+example/Pride.txt 1
+</list>
+<list> shall
+example/Pride.txt 3
+</list>
+<list> share
+example/Pride.txt 1
+</list>
+<list> sharpened
+example/Pride.txt 1
+</list>
+<list> she
+example/Pride.txt 31
+</list>
+<list> shocking
+example/Pride.txt 1
+</list>
+<list> should
+example/Pride.txt 5
+</list>
+<list> shut
+example/Pride.txt 1
+</list>
+<list> sick
+example/Pride.txt 1
+</list>
+<list> sight
+example/Pride.txt 1
+</list>
+<list> silly
+example/Pride.txt 1
+</list>
+<list> since
+example/Pride.txt 2
+</list>
+<list> single
+example/Pride.txt 4
+</list>
+<list> sir
+example/Pride.txt 2
+</list>
+<list> sisters
+example/Pride.txt 8
+</list>
+<list> sit
+example/Pride.txt 1
+</list>
+<list> sitting
+example/Pride.txt 1
+</list>
+<list> six
+example/Pride.txt 1
+</list>
+<list> sixth
+example/Pride.txt 1
+</list>
+<list> skill
+example/Pride.txt 1
+</list>
+<list> slighted
+example/Pride.txt 2
+</list>
+<list> smiles
+example/Pride.txt 1
+</list>
+<list> so
+example/Pride.txt 26
+</list>
+<list> solace
+example/Pride.txt 1
+</list>
+<list> some
+example/Pride.txt 3
+</list>
+<list> somebody
+example/Pride.txt 1
+</list>
+<list> something
+example/Pride.txt 2
+</list>
+<list> somewhat
+example/Pride.txt 1
+</list>
+<list> soon
+example/Pride.txt 8
+</list>
+<list> sorry
+example/Pride.txt 1
+</list>
+<list> speak
+example/Pride.txt 1
+</list>
+<list> speaking
+example/Pride.txt 1
+</list>
+<list> spent
+example/Pride.txt 2
+</list>
+<list> spirit
+example/Pride.txt 2
+</list>
+<list> spirits
+example/Pride.txt 1
+</list>
+<list> splendid
+example/Pride.txt 1
+</list>
+<list> spoke
+example/Pride.txt 1
+</list>
+<list> sprained
+example/Pride.txt 1
+</list>
+<list> stand
+example/Pride.txt 3
+</list>
+<list> standing
+example/Pride.txt 2
+</list>
+<list> stared
+example/Pride.txt 1
+</list>
+<list> starting
+example/Pride.txt 1
+</list>
+<list> step
+example/Pride.txt 1
+</list>
+<list> still
+example/Pride.txt 2
+</list>
+<list> story
+example/Pride.txt 2
+</list>
+<list> stoutly
+example/Pride.txt 1
+</list>
+<list> stranger
+example/Pride.txt 1
+</list>
+<list> stress
+example/Pride.txt 1
+</list>
+<list> struck
+example/Pride.txt 1
+</list>
+<list> stupid
+example/Pride.txt 1
+</list>
+<list> subject
+example/Pride.txt 2
+</list>
+<list> such
+example/Pride.txt 12
+</list>
+<list> suddenly
+example/Pride.txt 1
+</list>
+<list> suffer
+example/Pride.txt 1
+</list>
+<list> sufficient
+example/Pride.txt 1
+</list>
+<list> suiting
+example/Pride.txt 1
+</list>
+<list> suppositions
+example/Pride.txt 1
+</list>
+<list> sure
+example/Pride.txt 3
+</list>
+<list> surely
+example/Pride.txt 1
+</list>
+<list> surmises
+example/Pride.txt 1
+</list>
+<list> surpassing
+example/Pride.txt 1
+</list>
+<list> surrounding
+example/Pride.txt 1
+</list>
+<list> t
+example/Pride.txt 1
+</list>
+<list> take
+example/Pride.txt 3
+</list>
+<list> taken
+example/Pride.txt 2
+</list>
+<list> talk
+example/Pride.txt 1
+</list>
+<list> talked
+example/Pride.txt 1
+</list>
+<list> tall
+example/Pride.txt 1
+</list>
+<list> tallest
+example/Pride.txt 1
+</list>
+<list> tear
+example/Pride.txt 1
+</list>
+<list> teazing
+example/Pride.txt 1
+</list>
+<list> tell
+example/Pride.txt 3
+</list>
+<list> temper
+example/Pride.txt 1
+</list>
+<list> tempt
+example/Pride.txt 1
+</list>
+<list> ten
+example/Pride.txt 2
+</list>
+<list> than
+example/Pride.txt 5
+</list>
+<list> that
+example/Pride.txt 43
+</list>
+<list> the
+example/Pride.txt 122
+</list>
+<list> their
+example/Pride.txt 6
+</list>
+<list> them
+example/Pride.txt 16
+</list>
+<list> themselves
+example/Pride.txt 2
+</list>
+<list> then
+example/Pride.txt 4
+</list>
+<list> there
+example/Pride.txt 10
+</list>
+<list> therefore
+example/Pride.txt 4
+</list>
+<list> these
+example/Pride.txt 1
+</list>
+<list> they
+example/Pride.txt 13
+</list>
+<list> thing
+example/Pride.txt 7
+</list>
+<list> think
+example/Pride.txt 4
+</list>
+<list> thinking
+example/Pride.txt 2
+</list>
+<list> third
+example/Pride.txt 1
+</list>
+<list> this
+example/Pride.txt 8
+</list>
+<list> those
+example/Pride.txt 1
+</list>
+<list> though
+example/Pride.txt 6
+</list>
+<list> thought
+example/Pride.txt 1
+</list>
+<list> thousand
+example/Pride.txt 3
+</list>
+<list> three
+example/Pride.txt 1
+</list>
+<list> throw
+example/Pride.txt 1
+</list>
+<list> tide
+example/Pride.txt 1
+</list>
+<list> till
+example/Pride.txt 5
+</list>
+<list> time
+example/Pride.txt 5
+</list>
+<list> times
+example/Pride.txt 1
+</list>
+<list> tiresome
+example/Pride.txt 1
+</list>
+<list> to
+example/Pride.txt 91
+</list>
+<list> told
+example/Pride.txt 2
+</list>
+<list> tolerable
+example/Pride.txt 1
+</list>
+<list> too
+example/Pride.txt 2
+</list>
+<list> towards
+example/Pride.txt 2
+</list>
+<list> town
+example/Pride.txt 2
+</list>
+<list> trimming
+example/Pride.txt 1
+</list>
+<list> truth
+example/Pride.txt 2
+</list>
+<list> tumult
+example/Pride.txt 1
+</list>
+<list> turned
+example/Pride.txt 1
+</list>
+<list> turning
+example/Pride.txt 1
+</list>
+<list> twelve
+example/Pride.txt 2
+</list>
+<list> twenty
+example/Pride.txt 4
+</list>
+<list> twice
+example/Pride.txt 3
+</list>
+<list> two
+example/Pride.txt 8
+</list>
+<list> unable
+example/Pride.txt 2
+</list>
+<list> unaffected
+example/Pride.txt 1
+</list>
+<list> uncertain
+example/Pride.txt 1
+</list>
+<list> uncommonly
+example/Pride.txt 1
+</list>
+<list> understand
+example/Pride.txt 1
+</list>
+<list> understanding
+example/Pride.txt 1
+</list>
+<list> universally
+example/Pride.txt 1
+</list>
+<list> unless
+example/Pride.txt 1
+</list>
+<list> unlucky
+example/Pride.txt 1
+</list>
+<list> unreserved
+example/Pride.txt 1
+</list>
+<list> unworthy
+example/Pride.txt 1
+</list>
+<list> up
+example/Pride.txt 4
+</list>
+<list> upon
+example/Pride.txt 3
+</list>
+<list> upper
+example/Pride.txt 1
+</list>
+<list> us
+example/Pride.txt 3
+</list>
+<list> use
+example/Pride.txt 1
+</list>
+<list> various
+example/Pride.txt 1
+</list>
+<list> venture
+example/Pride.txt 1
+</list>
+<list> very
+example/Pride.txt 11
+</list>
+<list> vexed
+example/Pride.txt 1
+</list>
+<list> vexing
+example/Pride.txt 1
+</list>
+<list> views
+example/Pride.txt 2
+</list>
+<list> village
+example/Pride.txt 1
+</list>
+<list> violent
+example/Pride.txt 1
+</list>
+<list> visit
+example/Pride.txt 11
+</list>
+<list> visiting
+example/Pride.txt 1
+</list>
+<list> waited
+example/Pride.txt 1
+</list>
+<list> walked
+example/Pride.txt 3
+</list>
+<list> walking
+example/Pride.txt 1
+</list>
+<list> want
+example/Pride.txt 3
+</list>
+<list> was
+example/Pride.txt 48
+</list>
+<list> wasting
+example/Pride.txt 1
+</list>
+<list> way
+example/Pride.txt 3
+</list>
+<list> ways
+example/Pride.txt 1
+</list>
+<list> we
+example/Pride.txt 7
+</list>
+<list> week
+example/Pride.txt 1
+</list>
+<list> well
+example/Pride.txt 5
+</list>
+<list> were
+example/Pride.txt 7
+</list>
+<list> what
+example/Pride.txt 13
+</list>
+<list> when
+example/Pride.txt 11
+</list>
+<list> where
+example/Pride.txt 1
+</list>
+<list> which
+example/Pride.txt 10
+</list>
+<list> while
+example/Pride.txt 2
+</list>
+<list> who
+example/Pride.txt 6
+</list>
+<list> whole
+example/Pride.txt 2
+</list>
+<list> whom
+example/Pride.txt 1
+</list>
+<list> whose
+example/Pride.txt 2
+</list>
+<list> why
+example/Pride.txt 2
+</list>
+<list> wife
+example/Pride.txt 8
+</list>
+<list> will
+example/Pride.txt 18
+</list>
+<list> william
+example/Pride.txt 2
+</list>
+<list> window
+example/Pride.txt 1
+</list>
+<list> wish
+example/Pride.txt 3
+</list>
+<list> wished
+example/Pride.txt 2
+</list>
+<list> with
+example/Pride.txt 42
+</list>
+<list> withdrew
+example/Pride.txt 1
+</list>
+<list> within
+example/Pride.txt 1
+</list>
+<list> without
+example/Pride.txt 1
+</list>
+<list> woman
+example/Pride.txt 5
+</list>
+<list> women
+example/Pride.txt 2
+</list>
+<list> wonderfully
+example/Pride.txt 1
+</list>
+<list> word
+example/Pride.txt 2
+</list>
+<list> wore
+example/Pride.txt 1
+</list>
+<list> world
+example/Pride.txt 1
+</list>
+<list> worth
+example/Pride.txt 1
+</list>
+<list> would
+example/Pride.txt 10
+</list>
+<list> year
+example/Pride.txt 3
+</list>
+<list> years
+example/Pride.txt 2
+</list>
+<list> yet
+example/Pride.txt 1
+</list>
+<list> you
+example/Pride.txt 70
+</list>
+<list> young
+example/Pride.txt 7
+</list>
+<list> youngest
+example/Pride.txt 2
+</list>
+<list> your
+example/Pride.txt 11
+</list>
+<list> yourself
+example/Pride.txt 1
+</list>
+----------------------------------------------------------------------------
+./indexer "this.txt" "Indexer/example/test"
+<list> a
+test3.txt 2
+</list>
+<list> and
+test3.txt 1
+</list>
+<list> brian
+test3.txt 1
+</list>
+<list> dog
+test.txt 1
+</list>
+<list> eat
+test3.txt 1
+</list>
+<list> elana
+test3.txt 1
+</list>
+<list> for
+test2.txt 1
+</list>
+<list> fox353
+test.txt 1
+</list>
+<list> gazooks
+test3.txt 1
+</list>
+<list> hello
+test2.txt 1
+</list>
+<list> is
+test2.txt 1
+</list>
+<list> it
+test2.txt 1
+</list>
+<list> jumped
+test.txt 1
+</list>
+<list> lara
+test3.txt 1
+</list>
+<list> largest
+test3.txt 1
+</list>
+<list> lazy
+test.txt 1
+</list>
+<list> looking
+test2.txt 1
+</list>
+<list> me
+test2.txt 1
+</list>
+<list> monster
+test3.txt 1
+</list>
+<list> over
+test.txt 1
+</list>
+<list> pizza
+test3.txt 1
+</list>
+<list> quickbrown
+test.txt 1
+</list>
+<list> re
+test2.txt 1
+</list>
+<list> s
+test3.txt 1
+</list>
+<list> said
+test3.txt 1
+</list>
+<list> she
+test3.txt 1
+</list>
+<list> smirk
+test3.txt 1
+</list>
+<list> the
+test.txt 2
+test3.txt 1
+</list>
+list> to
+test3.txt 1
+</list>
+<list> went
+test3.txt 1
+</list>
+<list> with
+test3.txt 2
+</list>
+<list> world
+test3.txt 1
+</list>
+<list> you
+test2.txt 1
+</list>
+
+----------------------------------------------------------------------------
+./indexer "output.txt" "example"
+<list> a
+example/Pride.txt 63
+example/test/test3.txt 2
+</list>
+<list> about
+example/Pride.txt 7
+</list>
+<list> above
+example/Pride.txt 2
+</list>
+<list> abuse
+example/Pride.txt 1
+</list>
+<list> accept
+example/Pride.txt 2
+</list>
+<list> accomplished
+example/Pride.txt 1
+</list>
+<list> account
+example/Pride.txt 1
+</list>
+<list> acknowledged
+example/Pride.txt 1
+</list>
+<list> acquaintance
+example/Pride.txt 4
+</list>
+<list> acquainted
+example/Pride.txt 3
+</list>
+<list> act
+example/Pride.txt 1
+</list>
+<list> actually
+example/Pride.txt 2
+</list>
+<list> added
+example/Pride.txt 1
+</list>
+<list> addressed
+example/Pride.txt 1
+</list>
+<list> adjusting
+example/Pride.txt 1
+</list>
+<list> admiration
+example/Pride.txt 1
+</list>
+<list> admire
+example/Pride.txt 1
+</list>
+<list> admired
+example/Pride.txt 2
+</list>
+<list> admitted
+example/Pride.txt 1
+</list>
+<list> advantage
+example/Pride.txt 2
+</list>
+<list> advice
+example/Pride.txt 1
+</list>
+<list> affect
+example/Pride.txt 1
+</list>
+<list> afraid
+example/Pride.txt 1
+</list>
+<list> after
+example/Pride.txt 4
+</list>
+<list> afterwards
+example/Pride.txt 1
+</list>
+<list> again
+example/Pride.txt 3
+</list>
+<list> against
+example/Pride.txt 2
+</list>
+<list> agree
+example/Pride.txt 1
+</list>
+<list> agreeable
+example/Pride.txt 2
+</list>
+<list> agreed
+example/Pride.txt 1
+</list>
+<list> ah
+example/Pride.txt 1
+</list>
+<list> air
+example/Pride.txt 1
+</list>
+<list> all
+example/Pride.txt 16
+</list>
+<list> already
+example/Pride.txt 1
+</list>
+<list> altogether
+example/Pride.txt 2
+</list>
+<list> always
+example/Pride.txt 4
+</list>
+<list> am
+example/Pride.txt 12
+</list>
+<list> amends
+example/Pride.txt 1
+</list>
+<list> amiable
+example/Pride.txt 1
+</list>
+<list> among
+example/Pride.txt 2
+</list>
+<list> amongst
+example/Pride.txt 1
+</list>
+<list> amusement
+example/Pride.txt 1
+</list>
+<list> an
+example/Pride.txt 10
+</list>
+<list> ancle
+example/Pride.txt 1
+</list>
+<list> and
+example/Pride.txt 92
+example/test/test3.txt 1
+</list>
+<list> angry
+example/Pride.txt 1
+</list>
+<list> another
+example/Pride.txt 4
+</list>
+<list> answer
+example/Pride.txt 2
+</list>
+<list> any
+example/Pride.txt 11
+</list>
+<list> are
+example/Pride.txt 19
+</list>
+<list> arrival
+example/Pride.txt 1
+</list>
+<list> arrived
+example/Pride.txt 1
+</list>
+<list> as
+example/Pride.txt 25
+</list>
+<list> ascertaining
+example/Pride.txt 1
+</list>
+<list> ask
+example/Pride.txt 3
+</list>
+<list> asked
+example/Pride.txt 3
+</list>
+<list> assemblies
+example/Pride.txt 1
+</list>
+<list> assembly
+example/Pride.txt 4
+</list>
+<list> assistance
+example/Pride.txt 1
+</list>
+<list> assure
+example/Pride.txt 3
+</list>
+<list> assuring
+example/Pride.txt 1
+</list>
+<list> astonishment
+example/Pride.txt 1
+</list>
+<list> at
+example/Pride.txt 20
+</list>
+<list> attacked
+example/Pride.txt 1
+</list>
+<list> attention
+example/Pride.txt 1
+</list>
+<list> aye
+example/Pride.txt 1
+</list>
+<list> back
+example/Pride.txt 1
+</list>
+<list> ball
+example/Pride.txt 7
+</list>
+<list> barefaced
+example/Pride.txt 1
+</list>
+<list> be
+example/Pride.txt 33
+</list>
+<list> beautiful
+example/Pride.txt 2
+</list>
+<list> beauty
+example/Pride.txt 4
+</list>
+<list> been
+example/Pride.txt 9
+</list>
+<list> before
+example/Pride.txt 4
+</list>
+<list> began
+example/Pride.txt 3
+</list>
+<list> behaviour
+example/Pride.txt 1
+</list>
+<list> beheld
+example/Pride.txt 1
+</list>
+<list> behind
+example/Pride.txt 1
+</list>
+<list> being
+example/Pride.txt 5
+</list>
+<list> believe
+example/Pride.txt 1
+</list>
+<list> bennet
+example/Pride.txt 28
+</list>
+<list> best
+example/Pride.txt 1
+</list>
+<list> better
+example/Pride.txt 4
+</list>
+<list> between
+example/Pride.txt 2
+</list>
+<list> bingley
+example/Pride.txt 27
+</list>
+<list> bit
+example/Pride.txt 1
+</list>
+<list> bitterness
+example/Pride.txt 1
+</list>
+<list> black
+example/Pride.txt 1
+</list>
+<list> blue
+example/Pride.txt 1
+</list>
+<list> body
+example/Pride.txt 2
+</list>
+<list> book
+example/Pride.txt 1
+</list>
+<list> books
+example/Pride.txt 1
+</list>
+<list> boulanger
+example/Pride.txt 1
+</list>
+<list> branch
+example/Pride.txt 1
+</list>
+<list> brian
+example/test/test3.txt 1
+</list>
+<list> bring
+example/Pride.txt 1
+</list>
+<list> brother
+example/Pride.txt 1
+</list>
+<list> brought
+example/Pride.txt 1
+</list>
+<list> business
+example/Pride.txt 2
+</list>
+<list> but
+example/Pride.txt 26
+</list>
+<list> by
+example/Pride.txt 16
+</list>
+<list> c
+example/Pride.txt 1
+</list>
+<list> called
+example/Pride.txt 1
+</list>
+<list> came
+example/Pride.txt 2
+</list>
+<list> can
+example/Pride.txt 10
+</list>
+<list> cannot
+example/Pride.txt 3
+</list>
+<list> caprice
+example/Pride.txt 1
+</list>
+<list> care
+example/Pride.txt 1
+</list>
+<list> cases
+example/Pride.txt 1
+</list>
+<list> catching
+example/Pride.txt 1
+</list>
+<list> catherine
+example/Pride.txt 1
+</list>
+<list> certain
+example/Pride.txt 1
+</list>
+<list> certainly
+example/Pride.txt 4
+</list>
+<list> chaise
+example/Pride.txt 1
+</list>
+<list> chance
+example/Pride.txt 1
+</list>
+<list> character
+example/Pride.txt 2
+</list>
+<list> charming
+example/Pride.txt 1
+</list>
+<list> children
+example/Pride.txt 1
+</list>
+<list> chuse
+example/Pride.txt 1
+</list>
+<list> chuses
+example/Pride.txt 1
+</list>
+<list> circulation
+example/Pride.txt 1
+</list>
+<list> circumspection
+example/Pride.txt 1
+</list>
+<list> closed
+example/Pride.txt 1
+</list>
+<list> coat
+example/Pride.txt 1
+</list>
+<list> coldly
+example/Pride.txt 1
+</list>
+<list> come
+example/Pride.txt 5
+</list>
+<list> comers
+example/Pride.txt 1
+</list>
+<list> comes
+example/Pride.txt 2
+</list>
+<list> comforted
+example/Pride.txt 1
+</list>
+<list> company
+example/Pride.txt 1
+</list>
+<list> compared
+example/Pride.txt 1
+</list>
+<list> compassion
+example/Pride.txt 3
+</list>
+<list> conceited
+example/Pride.txt 1
+</list>
+<list> conjecturing
+example/Pride.txt 1
+</list>
+<list> consent
+example/Pride.txt 1
+</list>
+<list> consequence
+example/Pride.txt 1
+</list>
+<list> consequently
+example/Pride.txt 1
+</list>
+<list> consider
+example/Pride.txt 2
+</list>
+<list> consideration
+example/Pride.txt 1
+</list>
+<list> considered
+example/Pride.txt 1
+</list>
+<list> consisted
+example/Pride.txt 1
+</list>
+<list> contain
+example/Pride.txt 1
+</list>
+<list> continued
+example/Pride.txt 2
+</list>
+<list> contrast
+example/Pride.txt 1
+</list>
+<list> conversation
+example/Pride.txt 1
+</list>
+<list> cordial
+example/Pride.txt 1
+</list>
+<list> cough
+example/Pride.txt 2
+</list>
+<list> coughing
+example/Pride.txt 1
+</list>
+<list> coughs
+example/Pride.txt 1
+</list>
+<list> could
+example/Pride.txt 7
+</list>
+<list> countenance
+example/Pride.txt 2
+</list>
+<list> courses
+example/Pride.txt 1
+</list>
+<list> cousin
+example/Pride.txt 1
+</list>
+<list> creature
+example/Pride.txt 2
+</list>
+<list> credit
+example/Pride.txt 1
+</list>
+<list> cried
+example/Pride.txt 6
+</list>
+<list> crown
+example/Pride.txt 1
+</list>
+<list> curiosity
+example/Pride.txt 1
+</list>
+<list> dance
+example/Pride.txt 8
+</list>
+<list> danced
+example/Pride.txt 7
+</list>
+<list> dances
+example/Pride.txt 1
+</list>
+<list> dancing
+example/Pride.txt 2
+</list>
+<list> darcy
+example/Pride.txt 7
+</list>
+<list> dare
+example/Pride.txt 4
+</list>
+<list> daughter
+example/Pride.txt 2
+</list>
+<list> daughters
+example/Pride.txt 8
+</list>
+<list> day
+example/Pride.txt 5
+</list>
+<list> days
+example/Pride.txt 1
+</list>
+<list> deal
+example/Pride.txt 1
+</list>
+<list> dear
+example/Pride.txt 14
+</list>
+<list> decided
+example/Pride.txt 2
+</list>
+<list> declare
+example/Pride.txt 1
+</list>
+<list> declared
+example/Pride.txt 1
+</list>
+<list> decline
+example/Pride.txt 1
+</list>
+<list> declined
+example/Pride.txt 1
+</list>
+<list> deep
+example/Pride.txt 1
+</list>
+<list> deferred
+example/Pride.txt 1
+</list>
+<list> deigned
+example/Pride.txt 1
+</list>
+<list> delight
+example/Pride.txt 1
+</list>
+<list> delighted
+example/Pride.txt 4
+</list>
+<list> delightful
+example/Pride.txt 2
+</list>
+<list> depend
+example/Pride.txt 2
+</list>
+<list> derbyshire
+example/Pride.txt 1
+</list>
+<list> description
+example/Pride.txt 2
+</list>
+<list> design
+example/Pride.txt 2
+</list>
+<list> desire
+example/Pride.txt 1
+</list>
+<list> determined
+example/Pride.txt 1
+</list>
+<list> determining
+example/Pride.txt 1
+</list>
+<list> detest
+example/Pride.txt 2
+</list>
+<list> develope
+example/Pride.txt 1
+</list>
+<list> did
+example/Pride.txt 2
+</list>
+<list> different
+example/Pride.txt 1
+</list>
+<list> difficult
+example/Pride.txt 1
+</list>
+<list> dinner
+example/Pride.txt 2
+</list>
+<list> disagreeable
+example/Pride.txt 3
+</list>
+<list> disappointed
+example/Pride.txt 1
+</list>
+<list> disclosed
+example/Pride.txt 1
+</list>
+<list> disconcerted
+example/Pride.txt 1
+</list>
+<list> discontented
+example/Pride.txt 1
+</list>
+<list> discovered
+example/Pride.txt 1
+</list>
+<list> discretion
+example/Pride.txt 1
+</list>
+<list> disgust
+example/Pride.txt 1
+</list>
+<list> dislike
+example/Pride.txt 1
+</list>
+<list> dispatched
+example/Pride.txt 1
+</list>
+<list> disposition
+example/Pride.txt 1
+</list>
+<list> distant
+example/Pride.txt 1
+</list>
+<list> distinguished
+example/Pride.txt 1
+</list>
+<list> do
+example/Pride.txt 16
+</list>
+<list> does
+example/Pride.txt 2
+</list>
+<list> dog
+example/test/test.txt 1
+</list>
+<list> don
+example/Pride.txt 1
+</list>
+<list> door
+example/Pride.txt 1
+</list>
+<list> down
+example/Pride.txt 4
+</list>
+<list> downs
+example/Pride.txt 1
+</list>
+<list> draw
+example/Pride.txt 1
+</list>
+<list> dresses
+example/Pride.txt 1
+</list>
+<list> drew
+example/Pride.txt 1
+</list>
+<list> during
+example/Pride.txt 1
+</list>
+<list> earliest
+example/Pride.txt 1
+</list>
+<list> early
+example/Pride.txt 1
+</list>
+<list> easy
+example/Pride.txt 1
+</list>
+<list> eat
+example/test/test3.txt 1
+</list>
+<list> either
+example/Pride.txt 1
+</list>
+<list> elana
+example/test/test3.txt 1
+</list>
+<list> eldest
+example/Pride.txt 2
+</list>
+<list> elegant
+example/Pride.txt 1
+</list>
+<list> elizabeth
+example/Pride.txt 5
+</list>
+<list> else
+example/Pride.txt 1
+</list>
+<list> eluded
+example/Pride.txt 1
+</list>
+<list> emphatic
+example/Pride.txt 1
+</list>
+<list> employed
+example/Pride.txt 1
+</list>
+<list> end
+example/Pride.txt 2
+</list>
+<list> enduring
+example/Pride.txt 1
+</list>
+<list> engage
+example/Pride.txt 1
+</list>
+<list> engaged
+example/Pride.txt 1
+</list>
+<list> england
+example/Pride.txt 1
+</list>
+<list> enjoy
+example/Pride.txt 1
+</list>
+<list> enough
+example/Pride.txt 5
+</list>
+<list> enquired
+example/Pride.txt 1
+</list>
+<list> entered
+example/Pride.txt 2
+</list>
+<list> entering
+example/Pride.txt 1
+</list>
+<list> entertained
+example/Pride.txt 2
+</list>
+<list> entrance
+example/Pride.txt 1
+</list>
+<list> equally
+example/Pride.txt 1
+</list>
+<list> escape
+example/Pride.txt 1
+</list>
+<list> establishment
+example/Pride.txt 1
+</list>
+<list> estate
+example/Pride.txt 1
+</list>
+<list> evening
+example/Pride.txt 8
+</list>
+<list> event
+example/Pride.txt 1
+</list>
+<list> ever
+example/Pride.txt 3
+</list>
+<list> every
+example/Pride.txt 4
+</list>
+<list> exaggeration
+example/Pride.txt 1
+</list>
+<list> excellent
+example/Pride.txt 2
+</list>
+<list> excessively
+example/Pride.txt 1
+</list>
+<list> exclamation
+example/Pride.txt 1
+</list>
+<list> expectations
+example/Pride.txt 1
+</list>
+<list> expected
+example/Pride.txt 1
+</list>
+<list> experience
+example/Pride.txt 1
+</list>
+<list> extracts
+example/Pride.txt 1
+</list>
+<list> extraordinary
+example/Pride.txt 1
+</list>
+<list> extremely
+example/Pride.txt 1
+</list>
+<list> eye
+example/Pride.txt 1
+</list>
+<list> fall
+example/Pride.txt 1
+</list>
+<list> falling
+example/Pride.txt 1
+</list>
+<list> families
+example/Pride.txt 1
+</list>
+<list> family
+example/Pride.txt 1
+</list>
+<list> fancied
+example/Pride.txt 1
+</list>
+<list> fancy
+example/Pride.txt 1
+</list>
+<list> fancying
+example/Pride.txt 1
+</list>
+<list> fashion
+example/Pride.txt 1
+</list>
+<list> fastidious
+example/Pride.txt 1
+</list>
+<list> father
+example/Pride.txt 4
+</list>
+<list> fatigued
+example/Pride.txt 1
+</list>
+<list> favourable
+example/Pride.txt 1
+</list>
+<list> fear
+example/Pride.txt 1
+</list>
+<list> fears
+example/Pride.txt 1
+</list>
+<list> features
+example/Pride.txt 1
+</list>
+<list> feelings
+example/Pride.txt 2
+</list>
+<list> felt
+example/Pride.txt 1
+</list>
+<list> few
+example/Pride.txt 3
+</list>
+<list> fifth
+example/Pride.txt 1
+</list>
+<list> figure
+example/Pride.txt 1
+</list>
+<list> find
+example/Pride.txt 1
+</list>
+<list> fine
+example/Pride.txt 4
+</list>
+<list> finery
+example/Pride.txt 1
+</list>
+<list> first
+example/Pride.txt 4
+</list>
+<list> five
+example/Pride.txt 6
+</list>
+<list> fixed
+example/Pride.txt 1
+</list>
+<list> flatter
+example/Pride.txt 1
+</list>
+<list> flying
+example/Pride.txt 1
+</list>
+<list> followed
+example/Pride.txt 2
+</list>
+<list> following
+example/Pride.txt 2
+</list>
+<list> fond
+example/Pride.txt 1
+</list>
+<list> for
+example/Pride.txt 38
+example/test/test2.txt 1
+</list>
+<list> forbidding
+example/Pride.txt 1
+</list>
+<list> forget
+example/Pride.txt 1
+</list>
+<list> forms
+example/Pride.txt 1
+</list>
+<list> fortnight
+example/Pride.txt 3
+</list>
+<list> fortunate
+example/Pride.txt 2
+</list>
+<list> fortune
+example/Pride.txt 3
+</list>
+<list> found
+example/Pride.txt 2
+</list>
+<list> four
+example/Pride.txt 3
+</list>
+<list> fourth
+example/Pride.txt 1
+</list>
+<list> fox353
+example/test/test.txt 1
+</list>
+<list> fretfully
+example/Pride.txt 1
+</list>
+<list> friend
+example/Pride.txt 5
+</list>
+<list> friends
+example/Pride.txt 2
+</list>
+<list> from
+example/Pride.txt 7
+</list>
+<list> gave
+example/Pride.txt 1
+</list>
+<list> gazooks
+example/test/test3.txt 1
+</list>
+<list> general
+example/Pride.txt 3
+</list>
+<list> gentleman
+example/Pride.txt 1
+</list>
+<list> gentlemanlike
+example/Pride.txt 1
+</list>
+<list> gentlemen
+example/Pride.txt 3
+</list>
+<list> get
+example/Pride.txt 3
+</list>
+<list> girl
+example/Pride.txt 2
+</list>
+<list> girls
+example/Pride.txt 9
+</list>
+<list> give
+example/Pride.txt 2
+</list>
+<list> given
+example/Pride.txt 1
+</list>
+<list> giving
+example/Pride.txt 2
+</list>
+<list> glad
+example/Pride.txt 2
+</list>
+<list> go
+example/Pride.txt 5
+</list>
+<list> god
+example/Pride.txt 1
+</list>
+<list> going
+example/Pride.txt 1
+</list>
+<list> gone
+example/Pride.txt 2
+</list>
+<list> good
+example/Pride.txt 8
+</list>
+<list> got
+example/Pride.txt 1
+</list>
+<list> gown
+example/Pride.txt 1
+</list>
+<list> gratified
+example/Pride.txt 1
+</list>
+<list> great
+example/Pride.txt 4
+</list>
+<list> grieved
+example/Pride.txt 1
+</list>
+<list> grown
+example/Pride.txt 1
+</list>
+<list> had
+example/Pride.txt 36
+</list>
+<list> half
+example/Pride.txt 4
+</list>
+<list> hand
+example/Pride.txt 1
+</list>
+<list> handsome
+example/Pride.txt 8
+</list>
+<list> handsomer
+example/Pride.txt 1
+</list>
+<list> happily
+example/Pride.txt 1
+</list>
+<list> has
+example/Pride.txt 8
+</list>
+<list> hat
+example/Pride.txt 1
+</list>
+<list> hate
+example/Pride.txt 1
+</list>
+<list> have
+example/Pride.txt 22
+</list>
+<list> having
+example/Pride.txt 3
+</list>
+<list> he
+example/Pride.txt 60
+</list>
+<list> hear
+example/Pride.txt 2
+</list>
+<list> heard
+example/Pride.txt 4
+</list>
+<list> hearing
+example/Pride.txt 2
+</list>
+<list> heart
+example/Pride.txt 1
+</list>
+<list> hearty
+example/Pride.txt 1
+</list>
+<list> heaven
+example/Pride.txt 1
+</list>
+<list> hello
+example/test/test2.txt 1
+</list>
+<list> her
+example/Pride.txt 41
+</list>
+<list> here
+example/Pride.txt 4
+</list>
+<list> herself
+example/Pride.txt 4
+</list>
+<list> hertfordshire
+example/Pride.txt 1
+</list>
+<list> high
+example/Pride.txt 2
+</list>
+<list> highly
+example/Pride.txt 1
+</list>
+<list> him
+example/Pride.txt 28
+</list>
+<list> himself
+example/Pride.txt 3
+</list>
+<list> his
+example/Pride.txt 46
+</list>
+<list> honour
+example/Pride.txt 3
+</list>
+<list> hope
+example/Pride.txt 2
+</list>
+<list> hoped
+example/Pride.txt 2
+</list>
+<list> hopes
+example/Pride.txt 2
+</list>
+<list> horrid
+example/Pride.txt 1
+</list>
+<list> horse
+example/Pride.txt 1
+</list>
+<list> house
+example/Pride.txt 1
+</list>
+<list> housekeeping
+example/Pride.txt 1
+</list>
+<list> how
+example/Pride.txt 13
+</list>
+<list> however
+example/Pride.txt 4
+</list>
+<list> humour
+example/Pride.txt 2
+</list>
+<list> humoured
+example/Pride.txt 1
+</list>
+<list> hurst
+example/Pride.txt 3
+</list>
+<list> husband
+example/Pride.txt 4
+</list>
+<list> hypocritical
+example/Pride.txt 1
+</list>
+<list> i
+example/Pride.txt 64
+</list>
+<list> idea
+example/Pride.txt 1
+</list>
+<list> ideas
+example/Pride.txt 1
+</list>
+<list> if
+example/Pride.txt 7
+</list>
+<list> ignorant
+example/Pride.txt 1
+</list>
+<list> ill
+example/Pride.txt 1
+</list>
+<list> imagine
+example/Pride.txt 1
+</list>
+<list> immediately
+example/Pride.txt 1
+</list>
+<list> impatiently
+example/Pride.txt 2
+</list>
+<list> impossible
+example/Pride.txt 4
+</list>
+<list> in
+example/Pride.txt 43
+</list>
+<list> indeed
+example/Pride.txt 3
+</list>
+<list> information
+example/Pride.txt 1
+</list>
+<list> ingenious
+example/Pride.txt 1
+</list>
+<list> inhabitants
+example/Pride.txt 1
+</list>
+<list> instead
+example/Pride.txt 1
+</list>
+<list> insufficient
+example/Pride.txt 1
+</list>
+<list> insupportable
+example/Pride.txt 1
+</list>
+<list> intelligence
+example/Pride.txt 1
+</list>
+<list> intended
+example/Pride.txt 1
+</list>
+<list> interrupted
+example/Pride.txt 1
+</list>
+<list> into
+example/Pride.txt 3
+</list>
+<list> introduce
+example/Pride.txt 4
+</list>
+<list> introduced
+example/Pride.txt 2
+</list>
+<list> introduction
+example/Pride.txt 1
+</list>
+<list> invitation
+example/Pride.txt 3
+</list>
+<list> is
+example/Pride.txt 31
+example/test/test2.txt 1
+</list>
+<list> it
+example/Pride.txt 34
+example/test/test2.txt 1
+</list>
+<list> its
+example/Pride.txt 1
+</list>
+<list> jane
+example/Pride.txt 6
+</list>
+<list> join
+example/Pride.txt 1
+</list>
+<list> joke
+example/Pride.txt 1
+</list>
+<list> joy
+example/Pride.txt 1
+</list>
+<list> jumps
+example/test/test.txt 1
+</list>
+<list> just
+example/Pride.txt 3
+</list>
+<list> keep
+example/Pride.txt 1
+</list>
+<list> kindness
+example/Pride.txt 2
+</list>
+<list> king
+example/Pride.txt 1
+</list>
+<list> kingdom
+example/Pride.txt 1
+</list>
+<list> kitty
+example/Pride.txt 4
+</list>
+<list> knew
+example/Pride.txt 2
+</list>
+<list> know
+example/Pride.txt 12
+</list>
+<list> knowledge
+example/Pride.txt 1
+</list>
+<list> known
+example/Pride.txt 2
+</list>
+<list> lace
+example/Pride.txt 1
+</list>
+<list> ladies
+example/Pride.txt 7
+</list>
+<list> lady
+example/Pride.txt 6
+</list>
+<list> laid
+example/Pride.txt 1
+</list>
+<list> lara
+example/test/test3.txt 1
+</list>
+<list> large
+example/Pride.txt 6
+</list>
+<list> largest
+example/test/test3.txt 1
+</list>
+<list> last
+example/Pride.txt 4
+</list>
+<list> law
+example/Pride.txt 1
+</list>
+<list> lazy
+example/test/test.txt 1
+</list>
+<list> learnt
+example/Pride.txt 1
+</list>
+<list> least
+example/Pride.txt 1
+</list>
+<list> left
+example/Pride.txt 1
+</list>
+<list> less
+example/Pride.txt 1
+</list>
+<list> let
+example/Pride.txt 3
+</list>
+<list> library
+example/Pride.txt 1
+</list>
+<list> life
+example/Pride.txt 4
+</list>
+<list> like
+example/Pride.txt 4
+</list>
+<list> likely
+example/Pride.txt 1
+</list>
+<list> likes
+example/Pride.txt 1
+</list>
+<list> lines
+example/Pride.txt 1
+</list>
+<list> little
+example/Pride.txt 6
+</list>
+<list> live
+example/Pride.txt 1
+</list>
+<list> lived
+example/Pride.txt 1
+</list>
+<list> lively
+example/Pride.txt 3
+</list>
+<list> lizzy
+example/Pride.txt 7
+</list>
+<list> london
+example/Pride.txt 2
+</list>
+<list> long
+example/Pride.txt 6
+</list>
+<list> longbourn
+example/Pride.txt 1
+</list>
+<list> looked
+example/Pride.txt 4
+</list>
+<list> looking
+example/Pride.txt 2
+example/test/test2.txt 1
+</list>
+<list> lose
+example/Pride.txt 1
+</list>
+<list> love
+example/Pride.txt 3
+</list>
+<list> loved
+example/Pride.txt 1
+</list>
+<list> lucas
+example/Pride.txt 5
+</list>
+<list> lydia
+example/Pride.txt 4
+</list>
+<list> m
+example/Pride.txt 1
+</list>
+<list> made
+example/Pride.txt 2
+</list>
+<list> make
+example/Pride.txt 4
+</list>
+<list> making
+example/Pride.txt 1
+</list>
+<list> mama
+example/Pride.txt 1
+</list>
+<list> man
+example/Pride.txt 10
+</list>
+<list> manner
+example/Pride.txt 2
+</list>
+<list> manners
+example/Pride.txt 2
+</list>
+<list> many
+example/Pride.txt 2
+</list>
+<list> maria
+example/Pride.txt 1
+</list>
+<list> married
+example/Pride.txt 3
+</list>
+<list> marrying
+example/Pride.txt 2
+</list>
+<list> mary
+example/Pride.txt 4
+</list>
+<list> matter
+example/Pride.txt 1
+</list>
+<list> may
+example/Pride.txt 6
+</list>
+<list> me
+example/Pride.txt 12
+example/test/test2.txt 1
+</list>
+<list> mean
+example/Pride.txt 2
+</list>
+<list> meaning
+example/Pride.txt 1
+</list>
+<list> meant
+example/Pride.txt 1
+</list>
+<list> meet
+example/Pride.txt 1
+</list>
+<list> men
+example/Pride.txt 2
+</list>
+<list> mention
+example/Pride.txt 1
+</list>
+<list> mentioned
+example/Pride.txt 1
+</list>
+<list> merely
+example/Pride.txt 2
+</list>
+<list> met
+example/Pride.txt 1
+</list>
+<list> michaelmas
+example/Pride.txt 1
+</list>
+<list> mien
+example/Pride.txt 1
+</list>
+<list> might
+example/Pride.txt 2
+</list>
+<list> mind
+example/Pride.txt 1
+</list>
+<list> minds
+example/Pride.txt 1
+</list>
+<list> minutes
+example/Pride.txt 3
+</list>
+<list> miss
+example/Pride.txt 5
+</list>
+<list> mistake
+example/Pride.txt 1
+</list>
+<list> mixture
+example/Pride.txt 1
+</list>
+<list> moment
+example/Pride.txt 1
+</list>
+<list> monday
+example/Pride.txt 1
+</list>
+<list> monster
+example/test/test3.txt 1
+</list>
+<list> more
+example/Pride.txt 7
+</list>
+<list> morning
+example/Pride.txt 2
+</list>
+<list> morris
+example/Pride.txt 1
+</list>
+<list> morrow
+example/Pride.txt 1
+</list>
+<list> most
+example/Pride.txt 8
+</list>
+<list> mother
+example/Pride.txt 3
+</list>
+<list> mr
+example/Pride.txt 47
+</list>
+<list> mrs
+example/Pride.txt 18
+</list>
+<list> much
+example/Pride.txt 13
+</list>
+<list> must
+example/Pride.txt 10
+</list>
+<list> my
+example/Pride.txt 28
+</list>
+<list> myself
+example/Pride.txt 2
+</list>
+<list> name
+example/Pride.txt 1
+</list>
+<list> near
+example/Pride.txt 1
+</list>
+<list> neglect
+example/Pride.txt 1
+</list>
+<list> neighbour
+example/Pride.txt 1
+</list>
+<list> neighbourhood
+example/Pride.txt 4
+</list>
+<list> nerves
+example/Pride.txt 3
+</list>
+<list> nervous
+example/Pride.txt 1
+</list>
+<list> netherfield
+example/Pride.txt 6
+</list>
+<list> never
+example/Pride.txt 6
+</list>
+<list> new
+example/Pride.txt 2
+</list>
+<list> news
+example/Pride.txt 1
+</list>
+<list> next
+example/Pride.txt 5
+</list>
+<list> nieces
+example/Pride.txt 2
+</list>
+<list> no
+example/Pride.txt 15
+</list>
+<list> noble
+example/Pride.txt 1
+</list>
+<list> nobody
+example/Pride.txt 1
+</list>
+<list> none
+example/Pride.txt 1
+</list>
+<list> nonsense
+example/Pride.txt 4
+</list>
+<list> nor
+example/Pride.txt 1
+</list>
+<list> north
+example/Pride.txt 1
+</list>
+<list> not
+example/Pride.txt 40
+</list>
+<list> nothing
+example/Pride.txt 3
+</list>
+<list> now
+example/Pride.txt 4
+</list>
+<list> number
+example/Pride.txt 1
+</list>
+<list> objection
+example/Pride.txt 1
+</list>
+<list> obliged
+example/Pride.txt 4
+</list>
+<list> observing
+example/Pride.txt 1
+</list>
+<list> occasion
+example/Pride.txt 2
+</list>
+<list> occasionally
+example/Pride.txt 1
+</list>
+<list> odd
+example/Pride.txt 1
+</list>
+<list> of
+example/Pride.txt 90
+example/u/i.txt 1
+</list>
+<list> off
+example/Pride.txt 2
+</list>
+<list> office
+example/Pride.txt 1
+</list>
+<list> often
+example/Pride.txt 1
+</list>
+<list> oh
+example/Pride.txt 6
+</list>
+<list> old
+example/Pride.txt 1
+</list>
+<list> oldest
+example/Pride.txt 1
+</list>
+<list> on
+example/Pride.txt 13
+</list>
+<list> once
+example/Pride.txt 2
+</list>
+<list> one
+example/Pride.txt 14
+</list>
+<list> only
+example/Pride.txt 10
+</list>
+<list> opinion
+example/Pride.txt 1
+</list>
+<list> or
+example/Pride.txt 6
+</list>
+<list> other
+example/Pride.txt 4
+</list>
+<list> others
+example/Pride.txt 2
+</list>
+<list> ought
+example/Pride.txt 2
+</list>
+<list> our
+example/Pride.txt 3
+</list>
+<list> over
+example/Pride.txt 5
+example/test/test.txt 1
+</list>
+<list> overhear
+example/Pride.txt 1
+</list>
+<list> own
+example/Pride.txt 6
+</list>
+<list> paid
+example/Pride.txt 2
+</list>
+<list> park
+example/Pride.txt 1
+</list>
+<list> part
+example/Pride.txt 1
+</list>
+<list> particular
+example/Pride.txt 1
+</list>
+<list> particularly
+example/Pride.txt 1
+</list>
+<list> partner
+example/Pride.txt 3
+</list>
+<list> partners
+example/Pride.txt 2
+</list>
+<list> parts
+example/Pride.txt 1
+</list>
+<list> party
+example/Pride.txt 6
+</list>
+<list> passed
+example/Pride.txt 1
+</list>
+<list> people
+example/Pride.txt 1
+</list>
+<list> perhaps
+example/Pride.txt 2
+</list>
+<list> person
+example/Pride.txt 1
+</list>
+<list> persuade
+example/Pride.txt 1
+</list>
+<list> pieces
+example/Pride.txt 1
+</list>
+<list> pizza
+example/test/test3.txt 1
+</list>
+<list> place
+example/Pride.txt 2
+</list>
+<list> planned
+example/Pride.txt 1
+</list>
+<list> playful
+example/Pride.txt 1
+</list>
+<list> pleasant
+example/Pride.txt 3
+</list>
+<list> pleasantly
+example/Pride.txt 1
+</list>
+<list> pleased
+example/Pride.txt 2
+</list>
+<list> pleasing
+example/Pride.txt 1
+</list>
+<list> pleasure
+example/Pride.txt 1
+</list>
+<list> poor
+example/Pride.txt 1
+</list>
+<list> popularity
+example/Pride.txt 1
+</list>
+<list> possession
+example/Pride.txt 2
+</list>
+<list> preference
+example/Pride.txt 1
+</list>
+<list> present
+example/Pride.txt 2
+</list>
+<list> press
+example/Pride.txt 1
+</list>
+<list> pretend
+example/Pride.txt 1
+</list>
+<list> pretty
+example/Pride.txt 2
+</list>
+<list> principal
+example/Pride.txt 2
+</list>
+<list> promised
+example/Pride.txt 1
+</list>
+<list> pronounced
+example/Pride.txt 1
+</list>
+<list> property
+example/Pride.txt 1
+</list>
+<list> protested
+example/Pride.txt 1
+</list>
+<list> proud
+example/Pride.txt 1
+</list>
+<list> proudest
+example/Pride.txt 1
+</list>
+<list> punishment
+example/Pride.txt 1
+</list>
+<list> qualities
+example/Pride.txt 1
+</list>
+<list> questions
+example/Pride.txt 1
+</list>
+<list> quick
+example/Pride.txt 1
+</list>
+<list> quickbrown
+example/test/test.txt 1
+</list>
+<list> quickness
+example/Pride.txt 1
+</list>
+<list> quieted
+example/Pride.txt 1
+</list>
+<list> quieter
+example/Pride.txt 1
+</list>
+<list> quite
+example/Pride.txt 7
+</list>
+<list> raised
+example/Pride.txt 1
+</list>
+<list> raptures
+example/Pride.txt 1
+</list>
+<list> rather
+example/Pride.txt 1
+</list>
+<list> re
+example/test/test2.txt 1
+</list>
+<list> read
+example/Pride.txt 1
+</list>
+<list> really
+example/Pride.txt 1
+</list>
+<list> recommend
+example/Pride.txt 1
+</list>
+<list> reflection
+example/Pride.txt 1
+</list>
+<list> regardless
+example/Pride.txt 1
+</list>
+<list> related
+example/Pride.txt 1
+</list>
+<list> remained
+example/Pride.txt 1
+</list>
+<list> replied
+example/Pride.txt 4
+</list>
+<list> reply
+example/Pride.txt 1
+</list>
+<list> report
+example/Pride.txt 3
+</list>
+<list> resentfully
+example/Pride.txt 1
+</list>
+<list> resentment
+example/Pride.txt 1
+</list>
+<list> reserve
+example/Pride.txt 1
+</list>
+<list> respect
+example/Pride.txt 1
+</list>
+<list> rest
+example/Pride.txt 3
+</list>
+<list> return
+example/Pride.txt 3
+</list>
+<list> returned
+example/Pride.txt 3
+</list>
+<list> ridiculous
+example/Pride.txt 1
+</list>
+<list> rightful
+example/Pride.txt 1
+</list>
+<list> rode
+example/Pride.txt 1
+</list>
+<list> room
+example/Pride.txt 9
+</list>
+<list> round
+example/Pride.txt 1
+</list>
+<list> rudeness
+example/Pride.txt 1
+</list>
+<list> s
+example/Pride.txt 9
+example/test/test3.txt 1
+</list>
+<list> said
+example/Pride.txt 15
+example/test/test3.txt 1
+</list>
+<list> sake
+example/Pride.txt 2
+</list>
+<list> sakes
+example/Pride.txt 1
+</list>
+<list> sarcastic
+example/Pride.txt 1
+</list>
+<list> sat
+example/Pride.txt 1
+</list>
+<list> satisfactory
+example/Pride.txt 1
+</list>
+<list> save
+example/Pride.txt 1
+</list>
+<list> saw
+example/Pride.txt 2
+</list>
+<list> say
+example/Pride.txt 7
+</list>
+<list> says
+example/Pride.txt 1
+</list>
+<list> scarcity
+example/Pride.txt 1
+</list>
+<list> scolding
+example/Pride.txt 1
+</list>
+<list> scrupulous
+example/Pride.txt 1
+</list>
+<list> second
+example/Pride.txt 3
+</list>
+<list> see
+example/Pride.txt 9
+</list>
+<list> seek
+example/Pride.txt 1
+</list>
+<list> seemed
+example/Pride.txt 1
+</list>
+<list> seen
+example/Pride.txt 1
+</list>
+<list> selfish
+example/Pride.txt 1
+</list>
+<list> send
+example/Pride.txt 2
+</list>
+<list> sensible
+example/Pride.txt 1
+</list>
+<list> servants
+example/Pride.txt 1
+</list>
+<list> serving
+example/Pride.txt 1
+</list>
+<list> set
+example/Pride.txt 1
+</list>
+<list> settled
+example/Pride.txt 2
+</list>
+<list> settling
+example/Pride.txt 1
+</list>
+<list> seven
+example/Pride.txt 1
+</list>
+<list> several
+example/Pride.txt 1
+</list>
+<list> shall
+example/Pride.txt 3
+</list>
+<list> share
+example/Pride.txt 1
+</list>
+<list> sharpened
+example/Pride.txt 1
+</list>
+<list> she
+example/Pride.txt 31
+example/test/test3.txt 1
+</list>
+<list> shocking
+example/Pride.txt 1
+</list>
+<list> should
+example/Pride.txt 5
+</list>
+<list> shut
+example/Pride.txt 1
+</list>
+<list> sick
+example/Pride.txt 1
+</list>
+<list> sight
+example/Pride.txt 1
+</list>
+<list> silly
+example/Pride.txt 1
+</list>
+<list> since
+example/Pride.txt 2
+</list>
+<list> single
+example/Pride.txt 4
+</list>
+<list> sir
+example/Pride.txt 2
+</list>
+<list> sisters
+example/Pride.txt 8
+</list>
+<list> sit
+example/Pride.txt 1
+</list>
+<list> sitting
+example/Pride.txt 1
+</list>
+<list> six
+example/Pride.txt 1
+</list>
+<list> sixth
+example/Pride.txt 1
+</list>
+<list> skill
+example/Pride.txt 1
+</list>
+<list> slighted
+example/Pride.txt 2
+</list>
+<list> smiles
+example/Pride.txt 1
+</list>
+<list> smirk
+example/test/test3.txt 1
+</list>
+<list> so
+example/Pride.txt 26
+</list>
+<list> solace
+example/Pride.txt 1
+</list>
+<list> some
+example/Pride.txt 3
+</list>
+<list> somebody
+example/Pride.txt 1
+</list>
+<list> something
+example/Pride.txt 2
+</list>
+<list> somewhat
+example/Pride.txt 1
+</list>
+<list> soon
+example/Pride.txt 8
+</list>
+<list> sorry
+example/Pride.txt 1
+</list>
+<list> speak
+example/Pride.txt 1
+</list>
+<list> speaking
+example/Pride.txt 1
+</list>
+<list> spent
+example/Pride.txt 2
+</list>
+<list> spirit
+example/Pride.txt 2
+</list>
+<list> spirits
+example/Pride.txt 1
+</list>
+<list> splendid
+example/Pride.txt 1
+</list>
+<list> spoke
+example/Pride.txt 1
+</list>
+<list> sprained
+example/Pride.txt 1
+</list>
+<list> stand
+example/Pride.txt 3
+</list>
+<list> standing
+example/Pride.txt 2
+</list>
+<list> stared
+example/Pride.txt 1
+</list>
+<list> starting
+example/Pride.txt 1
+</list>
+<list> step
+example/Pride.txt 1
+</list>
+<list> still
+example/Pride.txt 2
+</list>
+<list> story
+example/Pride.txt 2
+</list>
+<list> stoutly
+example/Pride.txt 1
+</list>
+<list> stranger
+example/Pride.txt 1
+</list>
+<list> stress
+example/Pride.txt 1
+</list>
+<list> struck
+example/Pride.txt 1
+</list>
+<list> stupid
+example/Pride.txt 1
+</list>
+<list> subject
+example/Pride.txt 2
+</list>
+<list> such
+example/Pride.txt 12
+</list>
+<list> suddenly
+example/Pride.txt 1
+</list>
+<list> suffer
+example/Pride.txt 1
+</list>
+<list> sufficient
+example/Pride.txt 1
+</list>
+<list> suiting
+example/Pride.txt 1
+</list>
+<list> suppositions
+example/Pride.txt 1
+</list>
+<list> sure
+example/Pride.txt 3
+</list>
+<list> surely
+example/Pride.txt 1
+</list>
+<list> surmises
+example/Pride.txt 1
+</list>
+<list> surpassing
+example/Pride.txt 1
+</list>
+<list> surrounding
+example/Pride.txt 1
+</list>
+<list> t
+example/Pride.txt 1
+</list>
+<list> take
+example/Pride.txt 3
+</list>
+<list> taken
+example/Pride.txt 2
+</list>
+<list> talk
+example/Pride.txt 1
+</list>
+<list> talked
+example/Pride.txt 1
+</list>
+<list> tall
+example/Pride.txt 1
+</list>
+<list> tallest
+example/Pride.txt 1
+</list>
+<list> tear
+example/Pride.txt 1
+</list>
+<list> teazing
+example/Pride.txt 1
+</list>
+<list> tell
+example/Pride.txt 3
+</list>
+<list> temper
+example/Pride.txt 1
+</list>
+<list> tempt
+example/Pride.txt 1
+</list>
+<list> ten
+example/Pride.txt 2
+</list>
+<list> than
+example/Pride.txt 5
+</list>
+<list> that
+example/Pride.txt 43
+</list>
+<list> the
+example/Pride.txt 122
+example/u/f.txt 3
+example/test/test.txt 2
+example/test/test3.txt 1
+example/u/i.txt 1
+</list>
+<list> their
+example/Pride.txt 6
+</list>
+<list> them
+example/Pride.txt 16
+</list>
+<list> themselves
+example/Pride.txt 2
+</list>
+<list> then
+example/Pride.txt 4
+</list>
+<list> there
+example/Pride.txt 10
+</list>
+<list> therefore
+example/Pride.txt 4
+</list>
+<list> these
+example/Pride.txt 1
+</list>
+<list> they
+example/Pride.txt 13
+</list>
+<list> thing
+example/Pride.txt 7
+</list>
+<list> think
+example/Pride.txt 4
+</list>
+<list> thinking
+example/Pride.txt 2
+</list>
+<list> third
+example/Pride.txt 1
+</list>
+<list> this
+example/Pride.txt 8
+</list>
+<list> those
+example/Pride.txt 1
+</list>
+<list> though
+example/Pride.txt 6
+</list>
+<list> thought
+example/Pride.txt 1
+</list>
+<list> thousand
+example/Pride.txt 3
+</list>
+<list> three
+example/Pride.txt 1
+</list>
+<list> throw
+example/Pride.txt 1
+</list>
+<list> tide
+example/Pride.txt 1
+</list>
+<list> till
+example/Pride.txt 5
+</list>
+<list> time
+example/Pride.txt 5
+</list>
+<list> times
+example/Pride.txt 1
+</list>
+<list> tiresome
+example/Pride.txt 1
+</list>
+<list> to
+example/Pride.txt 91
+example/test/test3.txt 1
+</list>
+<list> told
+example/Pride.txt 2
+</list>
+<list> tolerable
+example/Pride.txt 1
+</list>
+<list> too
+example/Pride.txt 2
+</list>
+<list> towards
+example/Pride.txt 2
+</list>
+<list> town
+example/Pride.txt 2
+</list>
+<list> trimming
+example/Pride.txt 1
+</list>
+<list> truth
+example/Pride.txt 2
+</list>
+<list> tumult
+example/Pride.txt 1
+</list>
+<list> turned
+example/Pride.txt 1
+</list>
+<list> turning
+example/Pride.txt 1
+</list>
+<list> twelve
+example/Pride.txt 2
+</list>
+<list> twenty
+example/Pride.txt 4
+</list>
+<list> twice
+example/Pride.txt 3
+</list>
+<list> two
+example/Pride.txt 8
+</list>
+<list> unable
+example/Pride.txt 2
+</list>
+<list> unaffected
+example/Pride.txt 1
+</list>
+<list> uncertain
+example/Pride.txt 1
+</list>
+<list> uncommonly
+example/Pride.txt 1
+</list>
+<list> understand
+example/Pride.txt 1
+</list>
+<list> understanding
+example/Pride.txt 1
+</list>
+<list> universally
+example/Pride.txt 1
+</list>
+<list> unless
+example/Pride.txt 1
+</list>
+<list> unlucky
+example/Pride.txt 1
+</list>
+<list> unreserved
+example/Pride.txt 1
+</list>
+<list> unworthy
+example/Pride.txt 1
+</list>
+<list> up
+example/Pride.txt 4
+</list>
+<list> upon
+example/Pride.txt 3
+</list>
+<list> upper
+example/Pride.txt 1
+</list>
+<list> us
+example/Pride.txt 3
+</list>
+<list> use
+example/Pride.txt 1
+</list>
+<list> various
+example/Pride.txt 1
+</list>
+<list> venture
+example/Pride.txt 1
+</list>
+<list> very
+example/Pride.txt 11
+</list>
+<list> vexed
+example/Pride.txt 1
+</list>
+<list> vexing
+example/Pride.txt 1
+</list>
+<list> views
+example/Pride.txt 2
+</list>
+<list> village
+example/Pride.txt 1
+</list>
+<list> violent
+example/Pride.txt 1
+</list>
+<list> visit
+example/Pride.txt 11
+</list>
+<list> visiting
+example/Pride.txt 1
+</list>
+<list> waited
+example/Pride.txt 1
+</list>
+<list> walked
+example/Pride.txt 3
+</list>
+<list> walking
+example/Pride.txt 1
+</list>
+<list> want
+example/Pride.txt 3
+</list>
+<list> was
+example/Pride.txt 48
+</list>
+<list> wasting
+example/Pride.txt 1
+</list>
+<list> way
+example/Pride.txt 3
+</list>
+<list> ways
+example/Pride.txt 1
+</list>
+<list> we
+example/Pride.txt 7
+</list>
+<list> week
+example/Pride.txt 1
+</list>
+<list> well
+example/Pride.txt 5
+</list>
+<list> went
+example/test/test3.txt 1
+</list>
+<list> were
+example/Pride.txt 7
+</list>
+<list> what
+example/Pride.txt 13
+</list>
+<list> when
+example/Pride.txt 11
+</list>
+<list> where
+example/Pride.txt 1
+</list>
+<list> which
+example/Pride.txt 10
+</list>
+<list> while
+example/Pride.txt 2
+</list>
+<list> who
+example/Pride.txt 6
+</list>
+<list> whole
+example/Pride.txt 2
+</list>
+<list> whom
+example/Pride.txt 1
+</list>
+<list> whose
+example/Pride.txt 2
+</list>
+<list> why
+example/Pride.txt 2
+</list>
+<list> wife
+example/Pride.txt 8
+</list>
+<list> will
+example/Pride.txt 18
+</list>
+<list> william
+example/Pride.txt 2
+</list>
+<list> window
+example/Pride.txt 1
+</list>
+<list> wish
+example/Pride.txt 3
+</list>
+<list> wished
+example/Pride.txt 2
+</list>
+<list> with
+example/Pride.txt 42
+example/test/test3.txt 2
+</list>
+<list> withdrew
+example/Pride.txt 1
+</list>
+<list> within
+example/Pride.txt 1
+</list>
+<list> without
+example/Pride.txt 1
+</list>
+<list> woman
+example/Pride.txt 5
+</list>
+<list> women
+example/Pride.txt 2
+</list>
+<list> wonderfully
+example/Pride.txt 1
+</list>
+<list> word
+example/Pride.txt 2
+</list>
+<list> wore
+example/Pride.txt 1
+</list>
+<list> world
+example/test/test3.txt 1
+example/Pride.txt 1
+</list>
+<list> worth
+example/Pride.txt 1
+</list>
+<list> would
+example/Pride.txt 10
+</list>
+<list> year
+example/Pride.txt 3
+</list>
+<list> years
+example/Pride.txt 2
+</list>
+<list> yet
+example/Pride.txt 1
+</list>
+<list> you
+example/Pride.txt 70
+example/test/test2.txt 1
+</list>
+<list> young
+example/Pride.txt 7
+</list>
+<list> youngest
+example/Pride.txt 2
+</list>
+<list> your
+example/Pride.txt 11
+</list>
+<list> yourself
+example/Pride.txt 1
+</list>
